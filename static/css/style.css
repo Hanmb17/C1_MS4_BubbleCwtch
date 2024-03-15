@@ -1,0 +1,149 @@
+:root {
+  --grey: #323232;
+  --white: #fff;
+  --pink: #ff69b4;
+  --purple: #bea3fd;
+  --blue: #87ceeb;
+  --green: #a4d689;
+  --orange: #FFB84D;
+}
+
+/* Text Colour Classes */
+
+.text-grey {
+  color: var(--grey);
+}
+
+.text-dark-grey {
+  color: var(--dark-grey);
+}
+
+/* Background Colour Classes */
+
+.bg-grey {
+  background-color: var(--grey);
+}
+
+.bg-pink {
+  background-color: var(--pink);
+}
+
+/* Border colour classes */
+
+.border-pink {
+  border: 1px solid var(--pink)
+}
+
+/* Fonts, Sizes & Weights */
+body {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+h2 {
+  font-family: "Fredoka", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings:
+    "wdth"112.5;
+}
+
+/* buttons */
+
+.btn-pink {
+  position: relative;
+  background-color: var(--pink) !important;
+  border-radius: 50%;
+  aspect-ratio: 1;
+}
+
+.btn-pink::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--white);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.btn-pink:hover::before {
+  opacity: 0.2;
+}
+
+.btn-pink:hover {
+  background-color: var(--pink) !important;
+}
+
+/* Nav */
+
+.logo {
+  max-width: 70px;
+}
+
+.nav-link-item {
+  text-align: end;
+  color: var(--white);
+}
+
+.heart-background {
+  display: inline-block;
+  position: relative;
+  margin-right: 10px;
+  /* Adjust as needed */
+}
+
+.heart {
+  position: relative;
+  display: inline-block;
+  top: 5px;
+  left: -10px;
+  width: 20px;
+  height: 20px;
+  background-color: var(--pink);
+  transform: rotate(-45deg);
+}
+
+.heart:before,
+.heart:after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: var(--pink);
+  border-radius: 50%;
+}
+
+.heart:before {
+  top: -10px;
+  left: 0px;
+}
+
+.heart:after {
+  top: 0;
+  left: 10px;
+  z-index: -1
+}
+
+.bag-icon {
+  position: relative;
+  top: -5px;
+  left: 1px;
+  transform: translate(-50%, -50%);
+  transform: rotate(45deg);
+}
+
+/* Media Queries */
+
+@media (max-width: 992px) {
+  .logo {
+    max-width: 50px;
+    /* Set max width to 100% for smaller screens */
+  }
+
+}
