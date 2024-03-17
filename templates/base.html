@@ -47,13 +47,13 @@
 </head>
 
 <body>
-  <header class="container-fluid py-2 fixed-top bg-grey">
-    <div class="row">
+  <header class="container-fluid pt-2 fixed-top bg-grey">
+    <div class="row d-none d-lg-flex">
       <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 d-flex align-items-center">
         <a href="{% url 'home' %}" class="nav-link">
           <div class="d-flex align-items-center">
             <img src="{% static 'media/logo.png' %}" alt="Bubble Cwtch Logo" class="logo me-2">
-            <div class="logo-text my-auto">
+            <div class="my-auto">
               <h2 class="text-white">Bubble Cwtch</h2>
             </div>
           </div>
@@ -66,7 +66,7 @@
               <input class="form-control border-0" type="text" name="q" placeholder="Search our site">
               <div class="input-group-append">
                 <button class="form-control border-0 btn btn-pink" type="submit">
-                  <span class="icon text-grey">
+                  <span class="text-grey">
                     <i class="fa-solid fa-magnifying-glass"></i>
                   </span>
                 </button>
@@ -114,6 +114,33 @@
           </li>                  
         </ul>
         
+      </div>
+    </div>
+    <div class="row bg-grey">
+      <nav class="navbar navbar-expand-lg navbar-light w-100">
+          {% include 'includes/mobile-top-header.html' %}
+          {% include 'includes/main-nav.html' %}
+      </nav>
+  </div>
+  <div id="delivery-banner" class="row text-center">
+      <div class="col bg-pink text-grey">
+          <h4 class="logo-font my-1">Free delivery on orders over £{{ free_delivery_threshold }}!</h4>                
+      </div>            
+  </div>
+
+  <!-- Search Section to Expand/Collapse -->
+  <div class="collapse d-lg-none my-2" id="collapseSearch">
+      <div class="overflow-hidden bg-white border-pink rounded-pill m-auto" id="searchBarMobile">
+          <div class="input-group">
+              <input class="form-control border-0" type="text" name="q" placeholder="Search our site">
+              <div class="input-group-append">
+                  <button class="form-control border-0 btn btn-pink" type="submit">
+                      <span class="text-grey">
+                          <i class="fa-solid fa-magnifying-glass"></i>
+                      </span>
+                  </button>
+              </div>
+          </div>
       </div>
     </div>
   </header>

@@ -1,0 +1,85 @@
+{% load static %}
+
+<!-- Mobile Nav Bar -->
+<div class="d-flex d-lg-none w-100">
+
+    <!-- Menu Toggle -->
+    <div class="col my-auto px-2">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-nav"
+            aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
+            <!-- Code snippet form my CI 1st Project -->
+            <span class="toggler-icon line-1"></span>
+            <span class="toggler-icon line-2"></span>
+            <span class="toggler-icon line-3"></span>
+        </button>
+    </div>
+
+    <!-- Logo -->
+    <div class=" col my-auto text-center">
+        <a href="{% url 'home' %}" class="nav-link">
+            <img src="{% static 'media/logo.png' %}" alt="Bubble Cwtch Logo" class="logo">
+            <h2 class="text-white d-none d-sm-block">Bubble Cwtch</h2>
+        </a>
+    </div>
+
+    <!-- Main Nav Links -->
+    <div class="col-6 col-sm-4 my-auto">
+        <ul class="my-0 text-end d-flex justify-content-evenly">
+
+            <!-- Search Trigger -->
+            <li class="list-inline-item">
+                <!-- Add data-toggle and href attributes to trigger the collapse -->
+                <a class="text-white nav-link" href="#collapseSearch" role="button" aria-expanded="false"
+                    aria-controls="collapseSearch" data-bs-toggle="collapse">
+                    <div class="text-center">
+                        <div><i class="fa-solid fa-magnifying-glass"></i></div>
+                    </div>
+                </a>
+            </li>
+
+
+            <!-- Account Dropdown Menu -->
+            <li class="list-inline-item dropdown">
+                <div>
+                    <a class="text-white nav-link" href="#" id="user-options-mobile" data-bs-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        <div class="text-center">
+                            <div><i class="fas fa-user"></i></div>
+                        </div>
+                    </a>
+                    <div class="dropdown-menu bg-grey border-0" aria-labelledby="user-options" id="mobileLoginMenu">
+                        {% if request.user.is_authenticated %}
+                        {% if request.user.is_superuser %}
+                        <a href="#" class="dropdown-item nav-link-item">Product Management</a>
+                        {% endif %}
+                        <a href="#" class="dropdown-item nav-link-item">My Profile</a>
+                        <a href="{% url 'account_logout' %}" class="dropdown-item nav-link-item">Logout</a>
+                        {% else %}
+                        <a href="{% url 'account_signup' %}" class="dropdown-item nav-link-item">Register</a>
+                        <a href="{% url 'account_login' %}" class="dropdown-item nav-link-item">Login</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </li>
+
+            <!-- Shopping Bag -->
+            <li class="list-inline-item">
+                <a class="nav-link heart-background" href="#">
+                    <div class="heart">
+                        <div class="bag-icon"><i class="fas fa-shopping-bag fa-lg text-grey"></i></div>
+                    </div>
+                    <p
+                        class="my-0 bag-total text-white {% if grand_total %}weight-bold{% else %}weight-regular{% endif %}">
+                        {% if total %}
+                        £{{ total|floatformat:2 }}
+                        {% else %}
+                        £0.00
+                        {% endif %}
+                    </p>
+                </a>
+            </li>
+
+        </ul>
+    </div>
+</div>
+<!-- End of Mobile Nav Bar -->
