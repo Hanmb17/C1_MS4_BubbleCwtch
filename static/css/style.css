@@ -6,6 +6,7 @@
   --blue: #87ceeb;
   --green: #a4d689;
   --orange: #FFB84D;
+  --dark-orange: #FFA533;
 }
 
 /* Text Colour Classes */
@@ -45,7 +46,8 @@ body {
 h1, 
 h2,
 h3,
-h4 {
+h4,
+h5 {
   font-family: "Fredoka", sans-serif;
   font-optical-sizing: auto;
   font-weight: 400;
@@ -253,6 +255,42 @@ h4 {
 #searchBarMobile {
   max-width: 450px;
 }
+
+/* Footer */ 
+
+.contact-links:hover{
+  text-decoration-color: var(--dark-orange) !important;
+}
+
+/* Footer */
+
+.footer-social-icons a {
+  display: inline-flex;
+  position: relative;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: var(--dark-orange);
+  overflow: hidden;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.footer-social-icons a i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--grey); 
+}
+
+.footer-social-icons a:hover {
+  background-color: transparent; 
+}
+
+.footer-social-icons a:hover i {
+  color: var(--dark-orange); 
+}
+
 /* Media Queries */
 
 @media (max-width: 992px) {
