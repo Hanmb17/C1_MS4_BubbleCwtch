@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block extra_title %}- Home{% endblock %}
+
 {% block page_header %}
     <div class="container header-container">
         <div class="row">
@@ -10,19 +12,20 @@
 {% endblock %}
 
 {% block content %}
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-12 col-md-8 my-auto">
-            <h1 class="display-5 logo-font text-grey">
+<div class="container-fluid home-hero d-flex align-items-center justify-content-center justify-content-md-start">
+    <div class="row g-0">
+        <div class="col-12 my-auto">
+            <h1 class="display-4 logo-font text-grey">
                 Explore Bubble Cwtch
                 <br><span class="display-6">Where Bath Time Becomes a Warm Hug</span>
             </h1>
             <div class="my-5">
                 <h4>
-                    <a href="" class="shop-now-button btn btn-lg rounded-pill py-3">Shop Now</a>
+                    <a href="" class="btn btn-lg btn-cta rounded-pill py-3 text-grey">Shop All Products</a>
                 </h4>
             </div>
         </div>
     </div>
 </div>
+
 {% endblock %}
