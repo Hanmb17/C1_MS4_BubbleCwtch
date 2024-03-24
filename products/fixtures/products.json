@@ -1,0 +1,58 @@
+[
+    {
+      "pk": 1,
+      "model": "products.product",
+      "fields": {
+        "category": 1,
+        "name": "Cwtch in the Valley",
+        "description": "Experience the warm hug of the Welsh valleys with our Cwtch in the Valley bath bomb. Allow the calming fragrance to take you to fields of blossoming lavender in the Welsh sunlight. Infused with coconut oil and real dried lavender petals, this heart-shaped bath bomb will help you relax, melt away your worries, and leave you feeling rejuvenated.",
+        "price": 4.5,
+        "is_featured": true,
+        "discontinued": false,
+        "image": null,
+        "rating": null
+      }
+    },
+    {
+      "pk": 2,
+      "model": "products.product",
+      "fields": {
+        "category": 1,
+        "name": "Citrus Dragon",
+        "description": "Embark on an exciting adventure with our Citrus Dragon bath bomb. Immerse yourself in a lively orange bath with the invigorating scent of citrus fruits, complemented by a touch of spice. When the bath bomb shaped like a dragon dissolves, it reveals concealed confetti in citrus shades that burst out, transforming the water with a mix of vibrant colours.",
+        "price": 5.5,
+        "is_featured": true,
+        "discontinued": false,
+        "image": null,
+        "rating": null
+      }
+    },
+    {
+        "pk": 3,
+        "model": "products.product",
+        "fields": {
+          "category": 2,
+          "name": "Swansea Seaside Breeze",
+          "description": "Enjoy the invigorating scent of fresh ocean breeze blended with the salty hints of seaweed. Our Swansea Seaside Breeze soap takes your mind on a relaxing walk along Swansea Bay. Infused with sea salt and moisturising coconut oil, this soap inspired by the beach will make your skin feel purified and moisturised.",
+          "price": 4.95,
+          "is_featured": true,
+          "discontinued": false,
+          "image": null,
+          "rating": null
+        }
+      },
+      {
+        "pk": 3,
+        "model": "products.product",
+        "fields": {
+          "category": 3,
+          "name": "Dragon's Breath",
+          "description": "Get ready to awaken your senses with our Dragon's Breath shower jelly. Filled with tangy grapefruit, refreshing peppermint, and invigorating lemon, this jiggly delight will refresh your skin and make you feel rejuvenated.",
+          "price": 5.95,
+          "is_featured": true,
+          "discontinued": false,
+          "image": null,
+          "rating": null
+        }
+      }
+  ]
