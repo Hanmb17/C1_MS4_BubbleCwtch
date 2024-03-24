@@ -4,21 +4,50 @@
 {% block extra_title %}- Home{% endblock %}
 
 {% block page_header %}
-    <div class="container header-container">
-        <div class="row">
-            <div class="col"></div>
-        </div>
-    </div>
+<div class="container header-container">
+  <div class="row">
+    <div class="col"></div>
+  </div>
+</div>
 {% endblock %}
 
 {% block content %}
-<div class="container-fluid d-flex align-items-center justify-content-center justify-content-md-start">
-    <div class="row g-0">
-        <div class="col-12 my-auto">
-            {{products}}
-            </div>
-        </div>
+<div class="px-lg-5 px-md-4">
+<div class="container-fluid align-items-center justify-content-center justify-content-md-start">
+  <div class="row g-0">
+    <div class="col-12 my-auto">
+      <h2>All Products</h2>
     </div>
+  </div>
+  <div class="row g-0">
+    {% for product in products %}
+    <div class="col-sm-6 col-md-4  col-lg-3 px-2 py-3">
+      <div class="card product-card h-100">
+        <div class="bg-clear">
+        </div>
+        <div class="text-center">
+          <img src="{% static 'media/cwtch_in_the_valley.png' %}" class="card-img-top product-img"
+            alt="{{ product.name }}">
+        </div>
+        <div
+          class="card-body product-card-body rounded-2 {% if product.category.friendly_name == 'Bath Bombs' %} bg-purple {% elif product.category.friendly_name == 'Soaps' %} bg-blue {% elif product.category.friendly_name == 'Shower Jellies' %} bg-green {% endif %}">
+          <div class="">
+            <h4 class="product-title text-grey">{{ product.name }}</h4>
+            <h5 class="text-grey"> {{ product.category.friendly_name}} </h5>
+            <p class="card-text text-grey"><strong>£{{ product.price }}</strong></p>
+            <small class="text-muted text-grey">Average Rating: {{ product.average_rating }} ({{ product.num_reviews }}
+              reviews)</small>
+          </div>
+        </div>
+        <div class="card-footer product-card-footer text-center">
+          <a href="#" class="btn btn-lg btn-cta rounded-pill text-grey">Add to bag</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+
+  </div>
+</div>
 </div>
 
 {% endblock %}

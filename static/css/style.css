@@ -29,6 +29,21 @@
   background-color: var(--pink);
 }
 
+.bg-purple {
+  background-color: var(--purple);
+}
+
+.bg-blue {
+  background-color: var(--blue);
+}
+
+.bg-green {
+  background-color: var(--green);
+}
+
+.bg-clear {
+  background: none;
+}
 /* Border colour classes */
 
 .border-pink {
@@ -47,7 +62,8 @@ h1,
 h2,
 h3,
 h4,
-h5 {
+h5,
+h6 {
   font-family: "Fredoka", sans-serif;
   font-optical-sizing: auto;
   font-weight: 400;
@@ -322,6 +338,46 @@ h5 {
   background-position: center center;
   background-size: cover;
 }
+
+/* Product cards */
+
+.product-card {
+  border: none;
+}
+
+.product-card .bg-clear {
+  height: 150px;
+}
+
+.product-card-body {
+  position: relative;
+  top: -250px;
+  padding-top: 100px;
+  padding-bottom: 30px;
+
+}
+
+.product-img {
+  position: relative;
+  top: -150px;
+  margin: auto;
+  width: 80%;
+  z-index: 100;
+}
+
+.product-card-footer {
+  margin-top: -280px;
+  z-index: 101;
+  border: none;
+  background: none;
+}
+
+.product-title {
+  color: var(--grey);
+  font-weight: 500;
+
+}
+
 
 
 /* Media Queries */
