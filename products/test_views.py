@@ -1,5 +1,6 @@
 from django.test import TestCase
 from django.urls import reverse
+from django.contrib.messages import get_messages
 
 from .models import Category, Product
 
@@ -88,3 +89,26 @@ class TestProductsViews(TestCase):
         self.assertContains(response, 'bg-purple', count=1)  # Check for bath bomb product class
         self.assertContains(response, 'bg-blue', count=1)  # Check for soap product class
         self.assertContains(response, 'bg-green', count=1)  # Check for shower jelly product class
+
+    def test_search_query(self):
+        """ Test search functionality """
+
+        Product.objects.create(
+            category=self.soaps_category,
+            name='Lavender Soap',
+            description='Test description for lavender soap',
+            price=5.00
+        )
+
+        response = self.client.get(reverse('products') + '?q=Lavender')
+
+        self.assertContains(response, 'Lavender Soap')
+
+    def test_empty_query(self):
+        """ Test handling of empty search query """
+
+        response = self.client.get(reverse('products') + '?q=')
+
+        messages = [m.message for m in get_messages(response.wsgi_request)]
+        self.assertIn("You didn't search for anything!", messages)
+        self.assertEqual(response.status_code, 302) 
