@@ -7,6 +7,7 @@
   --green: #a4d689;
   --orange: #FFB84D;
   --dark-orange: #FFA533;
+  --light-orange: #ffdba6;
 }
 
 /* Text Colour Classes */
@@ -39,6 +40,10 @@
 
 .bg-green {
   background-color: var(--green);
+}
+
+.bg-orange {
+  background-color: var(--light-orange);
 }
 
 .bg-clear {
@@ -412,7 +417,11 @@ h6 {
 
 }
 
+/* Shopping Bag Page */
 
+.shopping_bag_card{
+border: none;
+}
 
 /* Media Queries */
 
