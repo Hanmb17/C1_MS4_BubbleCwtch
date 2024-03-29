@@ -8,6 +8,7 @@
   --orange: #FFB84D;
   --dark-orange: #FFA533;
   --light-orange: #ffdba6;
+  --light-grey: #b9b9b9;
 }
 
 /* Text Colour Classes */
@@ -172,6 +173,34 @@ h6 {
   -moz-transition: all 0.3s ease; 
   -webkit-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
+}
+
+.decrement-qty:hover,
+.increment-qty:hover,
+.decrement-qty:active,
+.increment-qty:active,
+.decrement-qty:focus-visible,
+.increment-qty:focus-visible {
+  background-color: var(--orange);
+}
+
+.decrement-qty:hover .fas,
+.increment-qty:hover .fas,
+.decrement-qty:active .fas,
+.increment-qty:active .fas,
+.decrement-qty:focus-visible .fas,
+.increment-qty:focus-visible .fas {
+  color: var(--grey);
+}
+
+.decrement-qty:disabled,
+.increment-qty:disabled {
+  background-color: var(--light-grey);
+}
+
+.decrement-qty:disabled .fas,
+.increment-qty:disabled .fas {
+  color: var(--grey);
 }
 
 /* Nav */

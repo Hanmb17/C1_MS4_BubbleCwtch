@@ -1,7 +1,7 @@
 // Sort Products Dropdown
 // Adapted from Code Institute's Boutique Ado Walkthrough
 
-$(document).ready(function() { console.log('Document Ready'); 
+$(document).ready(function() { console.log('Document Ready');
 
 $('#sort-selector').change(function() {
     console.log('sort picked');
