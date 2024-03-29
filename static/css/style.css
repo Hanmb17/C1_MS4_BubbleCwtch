@@ -339,6 +339,40 @@ h6 {
   background-size: cover;
 }
 
+/* Products Page */ 
+
+.box-border-deselected {
+  border: 1px solid var(--grey) !important;
+}
+
+.box-border-selected {
+  border: 1px solid var(--dark-orange) !important;
+}
+
+.sort-select-wrapper {
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+#sort-selector:focus-visible {
+  outline: none !important;
+}
+
+#sort-selector {
+  width: fit-content;
+  height: 100%;
+  padding: 5px 10px;
+  border: none !important;
+  background: var(--white);
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -o-appearance: none;
+  color: var(--grey)
+}
+
+
+
 /* Product cards */
 
 .product-card {

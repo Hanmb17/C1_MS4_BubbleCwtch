@@ -18,6 +18,27 @@
     <div class="col-12 my-auto">
       <h2>All Products</h2>
     </div>
+    <div class="row g-0">
+       <!-- Sort-dropdown -->
+       <div class="col-12 col-md-6 my-auto order-md-last d-flex justify-content-center justify-content-md-end mt-1 mt-md-3 mt-md-0 px-2">
+        <div class="sort-select-wrapper box-border-{% if current_sorting == 'None_None' %}deselected{% else %}selected{% endif %}">
+            <select id="sort-selector" class="custom-select custom-select-sm rounded-0 font-body tex-dark-grey" aria-label="Sort products - choose a sort type">
+                <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Sort by...</option>
+                <option value="price_asc" {% if current_sorting == 'price_asc' %}selected{% endif %}>Price (low to high)</option>
+                <option value="price_desc" {% if current_sorting == 'price_desc' %}selected{% endif %}>Price (high to low)</option>
+                <option value="rating_asc" {% if current_sorting == 'rating_asc' %}selected{% endif %}>Rating (low to high)</option>
+                <option value="rating_desc" {% if current_sorting == 'rating_desc' %}selected{% endif %}>Rating (high to low)</option>
+                <option value="name_asc" {% if current_sorting == 'name_asc' %}selected{% endif %}>Name (A-Z)</option>
+                <option value="name_desc" {% if current_sorting == 'name_desc' %}selected{% endif %}>Name (Z-A)</option>
+                <option value="category_asc" {% if current_sorting == 'category_asc' %}selected{% endif %}>Category (A-Z)</option>
+                <option value="category_desc" {% if current_sorting == 'category_desc' %}selected{% endif %}>Category (Z-A)</option>
+            </select>
+        </div>
+    </div>
+    <div class="col-12 col-md-6 order-md-first d-flex align-items-end justify-content-center justify-content-md-start my-2 my-md-0">
+      add product count and detail here
+    </div>
+    </div>
   </div>
   <div class="row g-0">
     {% for product in products %}
@@ -58,4 +79,10 @@
 </div>
 </div>
 
+{% endblock %}
+
+
+{% block extra_js %}
+    <!-- Sort Dropdown JS -->
+    <script src="{% static 'products/js/sort_dropdown.js' %}"></script>
 {% endblock %}
