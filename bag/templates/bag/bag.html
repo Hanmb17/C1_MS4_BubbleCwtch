@@ -64,9 +64,12 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <!-- Error message placeholder -->
+        <span class="error-message"></span>
                                         <!-- Add a hidden input field to identify the item -->
                                         <input type="hidden" name="item_id" value="{{ item.item_id }}">
                                     </form>
+                                    
                                     <p class="card-text text-grey">Quantity: {{ item.quantity }}</p>
                                     <p class="card-text text-grey">Total Price: To add</p>
                                 </div>
