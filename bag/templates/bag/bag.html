@@ -38,6 +38,35 @@
                             <div class="d-flex justify-content-between align-items-start">
                                 <div>
                                     <h5 class="product-title">{{ item.product.name }}</h5>
+                                    <form class="form update-form" method="POST" action="{% url 'update_bag' %}">
+                                        {% csrf_token %}
+                                        <div class="form-group">
+                                            <div class="input-group input-group-{{ item.item_id }}">
+                                                <div class="input-group-prepend">
+                                                    <button
+                                                        class="decrement-qty bg-grey btn-sm text-white weight-bold btn rounded-0 decrement-qty_{{ item.item_id }}"
+                                                        data-item_id="{{ item.item_id }}"
+                                                        aria-label="Decrease Quantity">
+                                                        <i class="fas fa-minus fa-sm"></i>
+                                                    </button>
+                                                </div>
+                                                <input
+                                                    class="form-control form-control-sm qty_input font-body weight-semibold id_qty_{{ item.item_id }}"
+                                                    type="number" name="quantity" value="{{ item.quantity }}" min="1"
+                                                    max="99" data-item_id="{{ item.item_id }}" aria-label="Quantity">
+                                                <div class="input-group-append">
+                                                    <button
+                                                        class="increment-qty bg-grey btn-sm text-white weight-bold btn rounded-0 increment-qty_{{ item.item_id }}"
+                                                        data-item_id="{{ item.item_id }}"
+                                                        aria-label="Increase Quantity">
+                                                        <i class="fas fa-plus fa-sm"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Add a hidden input field to identify the item -->
+                                        <input type="hidden" name="item_id" value="{{ item.item_id }}">
+                                    </form>
                                     <p class="card-text text-grey">Quantity: {{ item.quantity }}</p>
                                     <p class="card-text text-grey">Total Price: To add</p>
                                 </div>
@@ -98,4 +127,10 @@
     </div>
 </div>
 </div>
+{% endblock %}
+
+{% block extra_js %}
+<!-- Quantity Input JS -->
+<script src="{% static 'products/js/quantity_input.js' %}"></script>
+<script src="{% static 'bag/js/update_bag.js' %}"></script>
 {% endblock %}
