@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_title %}- Home{% endblock %}
+
+{% block page_header %}
+<div class="container header-container">
+    <div class="row">
+        <div class="col"></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid home-hero d-flex align-items-center justify-content-center justify-content-md-start">
+    <div class="row">
+        <div class="col">
+            <hr>
+            <h2>Shopping Bag</h2>
+            <hr>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                {% if bag_items %}
+                <div class="table-responsive rounded">
+
+                </div>
+                {% else %}
+                <p>Your bag is empty.</p>
+                <a href="{% url 'products' %}" class="btn btn-outline-black rounded-0 btn-lg">
+                    <span class="icon">
+                        <i class="fas fa-chevron-left"></i>
+                    </span>
+                    <span class="text-uppercase">Keep Shopping</span>
+                </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    </div>
+
+    {% endblock %}
