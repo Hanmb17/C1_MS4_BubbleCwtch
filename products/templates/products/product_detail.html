@@ -13,43 +13,79 @@
 
 {% block content %}
 <div class="px-lg-5 px-md-4 my-2">
-<div class="container-fluid align-items-center d-flex justify-content-center justify-content-md-start">
-  <div class="row g-0">
-    <div class="col-12  col-md-6 col-lg-4 offset-lg-2 my-auto">
-      <div class="image-containe text-center">
-        {% if product.image %}
-                <a class="" href="{{ product.image.url }}" target="_blank">
-                    <img class="img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}" onerror="this.onerror=null;this.src='{{STATIC_URL}}media/cwtch_in_the_valley.png'">
-                </a>
-            {% else %}
-                <img class="img-fluid" src="{% static 'media/cwtch_in_the_valley.png' %}" alt="{{ product.name }}">
-            {% endif %}
+  <div class="container-fluid align-items-center d-flex justify-content-center justify-content-md-start">
+    <div class="row g-0">
+      <div class="col-12  col-md-6 col-lg-4 offset-lg-2 my-auto">
+        <div class="image-containe text-center">
+          {% if product.image %}
+          <a class="" href="{{ product.image.url }}" target="_blank">
+            <img class="img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}"
+              onerror="this.onerror=null;this.src='{{STATIC_URL}}media/cwtch_in_the_valley.png'">
+          </a>
+          {% else %}
+          <img class="img-fluid" src="{% static 'media/cwtch_in_the_valley.png' %}" alt="{{ product.name }}">
+          {% endif %}
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-5">
+
+        <!-- Product Name -->
+        <h1 class="text-grey">{{ product.name }}</h1>
+
+        <!-- Product Category -->
+        <div class="product-page-category mt-1">
+          <a href="{% url 'products' %}" class="text-grey">
+            <p class="font-title weight-semibold section-title text-uppercase">{{ product.category.friendly_name }}</p>
+          </a>
+        </div>
+
+        <!-- Product Price -->
+        <p class="text-grey">£{{ product.price }}</p>
+
+        <!-- Product Description -->
+        <p class="mt-3">{{ product.description }}</p>
+
+        <!-- Add To Bag Link -->
+
+        <!-- Add item to bag form -->
+        <form class="form" action="{% url 'add_to_bag' product.id %}" method="POST">
+          {% csrf_token %}
+
+          <!-- Quantity Input -->
+          <div class="product-page-quantity my-4">
+            <p class="mt-3 mb-1 weight-semibold">Quantity</p>
+            <div class="form-group w-50">
+              <div class="input-group">
+                <input class="form-control qty_input" type="number" name="quantity" value="1" min="1" max="99"
+                  data-item_id="{{ product.id }}" id="id_qty_{{ product.id }}" aria-label="Quantity">
+              </div>
+            </div>
+          </div>
+
+          <!-- Buttons -->
+          <div class="my-4 pt-2 pt-md-4 row">
+
+            <div class="col-12 col-md-8 col-lg-6 mb-2">
+
+              <!-- Add to Bag (Submit) Button -->
+              <input type="submit" class="btn btn-lg btn-cta rounded-pill text-grey" value="Add to bag">
+            </div>
+            <div class="col-12">
+
+              <!-- Keep Shopping Button -->
+              <a href="{% url 'products' %}" class="btn">
+                <i class="fas fa-chevron-left d-inline me-1"></i>
+                <p class="d-inline">Keep Shopping</p>
+              </a>
+            </div>
+          </div>
+
+          <!-- Hidden input to redirect user back to current page once added to bag -->
+          <input type="hidden" name="redirect_url" value="{{ request.path }}">
+        </form>
       </div>
     </div>
-    <div class="col-12 col-md-6 col-lg-5">
-
-      <!-- Product Name -->
-      <h1 class="text-grey">{{ product.name }}</h1>
-
-      <!-- Product Category -->
-      <div class="product-page-category mt-1">
-          <a href="{% url 'products' %}" class="text-grey">
-              <p class="font-title weight-semibold section-title text-uppercase">{{ product.category.friendly_name }}</p>
-          </a>
-      </div>
-
-      <!-- Product Price -->
-      <p class="text-grey">£{{ product.price }}</p>
-
-      <!-- Product Description -->
-      <p class="mt-3">{{ product.description }}</p>
-      
-      <!-- Add To Bag Link -->
-      <a href="#" class="btn btn-lg btn-cta rounded-pill text-grey">Add to bag</a>
-
   </div>
-  </div>
-</div>
 </div>
 
 {% endblock %}
