@@ -21,6 +21,9 @@
   color: var(--dark-grey);
 }
 
+.text-pink {
+  color: var(--pink);
+}
 /* Background Colour Classes */
 
 .bg-grey {
@@ -325,6 +328,22 @@ h6 {
   max-width: 450px;
 }
 
+/* Toasts */
+
+.message-container {
+  position: fixed;
+  top: 72px;
+  right: 15px;
+  z-index: 9999999999;
+}
+
+.custom-toast {
+  overflow: visible;
+}
+
+.toast-capper {
+  height: 2px;
+}
 /* Footer */ 
 
 .contact-links:hover{
