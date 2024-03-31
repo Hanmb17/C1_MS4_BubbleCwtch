@@ -45,8 +45,8 @@ def update_bag(request):
         bag = request.session.get('bag', {})
 
         if item_id in bag:
-            if quantity > 0:
-                bag[item_id] = quantity
+            if new_quantity > 0:
+                bag[item_id] = new_quantity
                 messages.success(request, f'Updated {product.name} quantity to {new_quantity}')
             else:
                 del bag[item_id]
