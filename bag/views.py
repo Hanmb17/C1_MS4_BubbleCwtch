@@ -25,7 +25,7 @@ def add_to_bag(request, item_id):
     
     if item_id in list(bag.keys()):
         bag[item_id] += quantity
-        messages.warning(
+        messages.success(
             request, f'Updated {product.name} quantity to {bag[item_id]}'
         )
     else:
@@ -39,24 +39,25 @@ def add_to_bag(request, item_id):
 def update_bag(request):
     """ Updates the shopping bag contents """
     if request.method == 'POST':
-
         item_id = request.POST.get('item_id')
+        product = get_object_or_404(Product, pk=item_id)
         new_quantity = int(request.POST.get('quantity'))
-
         bag = request.session.get('bag', {})
 
         if item_id in bag:
-            if new_quantity > 0:
-                bag[item_id] = new_quantity
+            if quantity > 0:
+                bag[item_id] = quantity
+                messages.success(request, f'Updated {product.name} quantity to {new_quantity}')
             else:
                 del bag[item_id]
-                messages.success(request, 'Item removed from bag.')
+                messages.success(request, f'{product.name} removed from bag.')
         else:
-            messages.error(request, 'Item not found in bag.')
+            messages.error(request, f'{product.name} not found in bag.')
 
         request.session['bag'] = bag
 
     return redirect(reverse('view_bag'))
+            
 
 def remove_from_bag(request, item_id):
     """Remove the item from the shopping bag"""
