@@ -164,6 +164,19 @@ h6,
   -o-transition: all 0.3s ease;
 }
 
+.btn-outline-cta {
+  color: var(--grey);
+  border: 2px solid var(--dark-orange);
+  transition: border-color 0.3s ease; 
+}
+
+.btn-outline-cta:hover,
+.btn-outline-cta:active,
+.btn-outline-cta:focus {
+  border: 2px solid var(--pink);
+
+}
+
 .btn-soaps:hover,
 .btn-soaps:active,
 .btn-soaps:focus {

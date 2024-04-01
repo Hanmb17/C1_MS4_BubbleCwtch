@@ -107,19 +107,26 @@
                         </li>
                     </ul>
 
-                    <button type="button" class="btn w-100 btn-lg btn-cta rounded-pill text-grey">
+                    <a href="{% url 'checkout' %}" class="btn w-100 btn-lg btn-cta rounded-pill text-grey mb-2">
                         Checkout
-                    </button>
+                    </a>
+
+                    <a href="{% url 'products' %}" class="btn w-100 btn-outline-cta rounded-pill">
+                        <span class="icon">
+                            <i class="fas fa-chevron-left"></i>
+                        </span>
+                        <span class="text-grey">Keep Shopping</span>
+                    </a>
                 </div>
             </div>
         </div>
         {% else %}
         <p>Your bag is empty.</p>
-        <a href="{% url 'products' %}" class="btn btn-outline-black rounded-0 btn-lg">
+        <a href="{% url 'products' %}" class="btn w-100 btn-outline-cta rounded-pill">
             <span class="icon">
                 <i class="fas fa-chevron-left"></i>
             </span>
-            <span class="text-uppercase">Keep Shopping</span>
+            <span class="text-grey">Keep Shopping</span>
         </a>
         {% endif %}
     </div>
