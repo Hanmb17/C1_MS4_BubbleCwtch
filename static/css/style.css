@@ -8,7 +8,7 @@
   --orange: #FFB84D;
   --dark-orange: #FFA533;
   --light-orange: #FFEBD1;
-  --light-grey: #b9b9b9;
+  --light-grey: #d8d8d8;
 }
 
 /* Text Colour Classes */
@@ -52,6 +52,10 @@
 
 .bg-clear {
   background: none;
+}
+
+.bg-light-grey {
+  background-color: var(--light-grey);
 }
 /* Border colour classes */
 

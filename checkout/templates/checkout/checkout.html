@@ -12,7 +12,7 @@
 {% endblock %}
 
 {% block content %}
-<div class="container py-5">
+<div class="container px-0 py-2">
     <hr>
     <h2>Checkout</h2>
     <hr>
@@ -20,10 +20,59 @@
 
 <div class="container">
 <div class="row">
-    <div class="col-12 col-md-6 col-lg-4  offset-lg-2 order-1" >
-        Add bag detail here
+    <div class="col-12 col-md-6 col-lg-5 offset-lg-1 order-1 px-0 px-md-2 py-3 py-md-0" >
+        <div class="card mb-3 bg-light-grey">
+            <div class="card-header bg-white">
+                <h5 class="card-title text-grey">Order Summary ({{ product_count }})</h5>
+            </div>
+            <div class="card-body">
+                {% for item in bag_items %}
+                <div class="row g-0 mb-1">
+                    <div class="col-2 text-center">
+                        <!-- Product Image -->
+                        {% if item.product.image %}
+                        <img class="img-fluid" src="{{ item.product.image.url }}" alt="{{ item.product.name }}"
+                            onerror="this.onerror=null;this.src='{{ STATIC_URL }}media/cwtch_in_the_valley.png'">
+                        {% else %}
+                        <img class="img-fluid" src="{% static 'media/cwtch_in_the_valley.png' %}"
+                            alt="{{ item.product.name }}">
+                        {% endif %}
+                    </div>
+                    <div class="col-9 offset-1">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h5 class="product-title">{{ item.product.name }}</h5>
+                                <p class="card-text text-grey">Quantity: {{ item.quantity }}</p>
+                            </div>
+                            <p class="card-text text-grey">Total Price: To add</p>
+                        </div>
+                    </div>
+                </div>
+                <hr class="text-pink my-1">
+                {% endfor %}
+            </div>
+            <div class="card-footer bg-white" >
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0 text-grey">
+                        Products
+                        <span>£{{ grand_total|floatformat:2 }}</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center px-0 text-grey">
+                        Shipping
+                        <span>{% if delivery == 0 %}FREE{% else %}{{ delivery|floatformat:2 }}{% endif %}</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 text-grey">
+                        <div>
+                            <strong>Total amount</strong>
+                            <p class="mb-0">(including VAT)</p>
+                        </div>
+                        <span><strong> £{{ grand_total|floatformat:2 }}</strong></span>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
-    <div class="col-12 col-md-6 bg-orange rounded-2">
+    <div class="col-12 col-md-6 bg-orange rounded-2 mb-3">
         <p class="text-grey">Please fill out the form below to complete your order</p>
         <form action="{% url 'checkout' %}" method="POST" id="order-form">
             {% csrf_token %}
@@ -110,7 +159,7 @@
             <!-- Section 3: Payment Information -->
             <!-- Add payment fields here -->
             
-            <button type="submit" class="btn btn-cta mt-3">Submit Order</button>
+            <button type="submit" class="btn btn-cta my-3 w-100 rounded-pill">Submit Order</button>
         </form>
     </div>
 
