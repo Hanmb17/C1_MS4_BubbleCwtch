@@ -46,7 +46,7 @@ class OrderForm(forms.ModelForm):
 
             # Adds styling classes to all inputs
             self.fields[field].widget.attrs['class'] = (
-                    'ib-form-field mb-3 px-2 py-2 font-body text-dark-grey')
+                'input-form mb-3 px-2 py-2 text-grey rounded-2')
 
             # Removes labels from inputs
-            self.fields[field].label = False
+           # self.fields[field].label = False

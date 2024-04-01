@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_title %}- Shopping Bag{% endblock %}
+
+{% block page_header %}
+<div class="container header-container">
+    <div class="row">
+        <div class="col"></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <hr>
+    <h2>Checkout</h2>
+    <hr>
+</div>
+
+<div class="container">
+<div class="row">
+    <div class="col-12 col-md-6 col-lg-4  offset-lg-2 order-1" >
+        Add bag detail here
+    </div>
+    <div class="col-12 col-md-6 bg-orange rounded-2">
+        <p class="text-grey">Please fill out the form below to complete your order</p>
+        <form action="{% url 'checkout' %}" method="POST" id="order-form">
+            {% csrf_token %}
+            
+            <!-- Section 1: Personal Information -->
+            <fieldset class="mb-2">
+                <legend class="text-grey header-font">Personal Information</legend>
+                <div class="mb-3">
+                    {{ order_form.full_name }}
+                    {% for error in order_form.full_name.errors %}
+                        <div class="invalid-feedback">
+                            {{ error }}
+                        </div>
+                    {% endfor %}
+                </div>
+                
+                <div class="mb-3">
+                    {{ order_form.email }}
+                    {% for error in order_form.email.errors %}
+                        <div class="invalid-feedback">
+                            {{ error }}
+                        </div>
+                    {% endfor %}
+                </div>
+            </fieldset>
+            
+            <!-- Section 2: Shipping Info -->
+            <fieldset class="mb-2">
+                <legend class="text-grey header-font">Shipping Information</legend>
+                <div class="mb-3">
+                    {{ order_form.phone_number }}
+                    {% for error in order_form.phone_number.errors %}
+                        <div class="invalid-feedback">
+                            {{ error }}
+                        </div>
+                    {% endfor %}
+                </div>
+                
+                <div class="mb-3">
+                    {{ order_form.street_address1 }}
+                    {% for error in order_form.street_address1.errors %}
+                        <div class="invalid-feedback">
+                            {{ error }}
+                        </div>
+                    {% endfor %}
+                </div>
+                
+                <div class="mb-3">
+                    {{ order_form.street_address2 }}
+                    {% for error in order_form.street_address2.errors %}
+                        <div class="invalid-feedback">
+                            {{ error }}
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <div class="mb-3">
+                    {{ order_form.town_or_city }}
+                    {% for error in order_form.town_or_city.errors %}
+                        <div class="invalid-feedback">
+                            {{ error }}
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="mb-3">
+                    {{ order_form.county}}
+                    {% for error in order_form.county.errors %}
+                        <div class="invalid-feedback">
+                            {{ error }}
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <div class="mb-3">
+                    {{ order_form.postcode }}
+                    {% for error in order_form.postcode.errors %}
+                        <div class="invalid-feedback">
+                            {{ error }}
+                        </div>
+                    {% endfor %}
+                </div>
+            </fieldset>
+            
+            <!-- Section 3: Payment Information -->
+            <!-- Add payment fields here -->
+            
+            <button type="submit" class="btn btn-cta mt-3">Submit Order</button>
+        </form>
+    </div>
+
+
+</div>
+</div>
+{% endblock %}
+
+
+
+{% block extra_js %}
+
+{% endblock %}

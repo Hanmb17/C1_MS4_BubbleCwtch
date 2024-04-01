@@ -72,7 +72,8 @@ h2,
 h3,
 h4,
 h5,
-h6 {
+h6, 
+.header-font {
   font-family: "Fredoka", sans-serif;
   font-optical-sizing: auto;
   font-weight: 400;
@@ -210,6 +211,18 @@ h6 {
   color: var(--grey);
 }
 
+/* Form Inputs */
+ .input-form {
+  border: 2px solid var(--orange);
+  width: 100%;
+ }
+
+ .input-form:focus-visible {
+  border: none;
+  outline-color: var(--pink);
+ }
+
+
 /* Nav */
 
 .logo {
@@ -227,7 +240,7 @@ h6 {
   margin-right: 10px;
 }
 
-/* /* Heart Css code form CSS Tricks  */
+/* Heart Css code form CSS Tricks  */
 .heart {
   position: relative;
   display: inline-block;
@@ -530,6 +543,8 @@ h6 {
 .shopping_bag_card{
 border: none;
 }
+
+
 
 /* Media Queries */
 
