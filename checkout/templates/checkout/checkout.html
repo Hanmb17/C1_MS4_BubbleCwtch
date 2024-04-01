@@ -155,9 +155,22 @@
                     {% endfor %}
                 </div>
             </fieldset>
-            
-            <!-- Section 3: Payment Information -->
-            <!-- Add payment fields here -->
+         
+            <!-- Section 3: Payment Details -->
+            <fieldset class="mb-3">
+                <legend class="text-grey header-font">Payment</legend>
+                
+                <!-- Stripe Card Input -->
+                <div class="" id="card-element"></div>
+
+                <!-- Form Errors -->
+                <div class="" id="card-errors" role="alert"></div>
+
+                <!-- Client Secret - hidden element to pass to view -->
+                <input type="hidden" value="{{ client_secret }}" name="client_secret">
+
+            </fieldset>
+        
             
             <button type="submit" class="btn btn-cta my-3 w-100 rounded-pill">Submit Order</button>
         </form>
@@ -170,6 +183,11 @@
 
 
 
-{% block extra_js %}
+{% block postloadjs %}
+
+    {{ block.super }}
+    {{ stripe_public_key|json_script:"id_stripe_public_key" }}
+    {{ client_secret|json_script:"id_client_secret" }}
+    <script src="{% static 'checkout/js/stripe_elements.js' %}"></script>
 
 {% endblock %}
