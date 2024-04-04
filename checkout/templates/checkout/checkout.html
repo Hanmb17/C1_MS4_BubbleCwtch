@@ -154,6 +154,14 @@
                         </div>
                     {% endfor %}
                 </div>
+                <div class="mb-3">
+                    {{ order_form.country }}
+                    {% for error in order_form.country.errors %}
+                        <div class="invalid-feedback">
+                            {{ error }}
+                        </div>
+                    {% endfor %}
+                </div>
             </fieldset>
          
             <!-- Section 3: Payment Details -->
