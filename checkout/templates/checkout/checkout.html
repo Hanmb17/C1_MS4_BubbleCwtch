@@ -12,6 +12,7 @@
 {% endblock %}
 
 {% block content %}
+
 <div class="container px-0 py-2">
     <hr>
     <h2>Checkout</h2>
@@ -74,7 +75,7 @@
     </div>
     <div class="col-12 col-md-6 bg-orange rounded-2 mb-3">
         <p class="text-grey">Please fill out the form below to complete your order</p>
-        <form action="{% url 'checkout' %}" method="POST" id="order-form">
+        <form action="{% url 'checkout' %}" method="POST" id="payment-form">
             {% csrf_token %}
             
             <!-- Section 1: Personal Information -->
@@ -186,6 +187,13 @@
 
 
 </div>
+</div>
+ <!-- Loading Animation -->
+ <div id="loading-overlay">
+    <div class="loading-spinner">
+        <i class="text-pink fa-3x fas fa-spinner fa-spin-pulse"></i>
+    </div>
+    
 </div>
 {% endblock %}
 
