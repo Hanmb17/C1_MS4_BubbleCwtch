@@ -48,12 +48,12 @@ class Order(models.Model):
     county = models.CharField(
         max_length=80,
         null=True,
-        blank=True
+        blank=False
     )
     postcode = models.CharField(
         max_length=20,
         null=True,
-        blank=True
+        blank=False
     )
     country = models.CharField(
         max_length=40,
