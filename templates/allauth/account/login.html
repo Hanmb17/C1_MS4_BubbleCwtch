@@ -2,13 +2,17 @@
 
 {% load i18n %}
 {% load account socialaccount %}
+{% load widget_tweaks %}
 
 {% block head_title %}{% trans "Sign In" %}{% endblock %}
 
-{% block content %}
+{% block inner_content %}
 
-<h1>{% trans "Sign In" %}</h1>
+<!-- Page Title -->
+<h1 class="text-center">{% trans "Sign In" %}</h1>
 
+
+<!-- Social Acocunts Sign in Section -->
 {% get_providers as socialaccount_providers %}
 
 {% if socialaccount_providers %}
@@ -28,19 +32,49 @@ for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
 
 {% include "socialaccount/snippets/login_extra.html" %}
 
+<!-- Intro text & link to signup -->
 {% else %}
-<p>{% blocktrans %}If you have not created an account yet, then please
-<a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
+<p class="text-center">{% blocktrans %}If you haven't become a member yet, please:
+<a href="{{ signup_url }}">sign up here</a>{% endblocktrans %}</p>
 {% endif %}
 
-<form class="login" method="POST" action="{% url 'account_login' %}">
+<!-- Form -->
+<form class="login text-center" method="POST" action="{% url 'account_login' %}">
+  
   {% csrf_token %}
-  {{ form.as_p }}
-  {% if redirect_field_value %}
-  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+
+  <!-- Form Inputs -->
+  {{ form.login|add_class:"mb-3 px-2 py-2 text-grey"|attr:"aria-label:Email or Username"|attr:"autocomplete:email" }}
+  {% for error in form.login.errors  %}
+    <span class="error-message">{{error}}</span>
+  {% endfor %}
+
+  {{ form.password|add_class:"mb-3 px-2 py-2 text-grey"|attr:"aria-label:Password"|attr:"autocomplete:current-password" }}
+  {% for error in form.password.errors  %}
+  <span class="error-message">{{error}}</span>
+  {% endfor %}
+
+  <div class="px-2 mb-2">
+    <label class="form-check-label" for="id_remember">Remember me:</label>
+    {{ form.remember|add_class:"form-check-input auth-form-check-input m-0 ms-2" }}
+    {% for error in form.remember.errors  %}
+      <span class="error-message d-block mb-1">{{error}}</span>
+    {% endfor %}
+  </div>
+
+  {% if form.errors %}
+    {% for error in form.non_field_errors %}
+      <span class="error-message d-block mb-1">{{error}}</span>
+    {% endfor %}
   {% endif %}
+  <div class="row mb-2">
+    <div class="col-12 text-center mb-2">
   <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
-  <button class="primaryAction" type="submit">{% trans "Sign In" %}</button>
+</div>
+<div class="col-12 text-center mt-2">
+  <button class="primaryAction btn-cta rounded-pill w-sm-50 py-2 px-4" type="submit">{% trans "Sign In" %}</button>
+</div>
+  </div>
 </form>
 
 {% endblock %}
