@@ -585,7 +585,9 @@ border: none;
   background-color: #fefde5 !important;
 }
 
-.stripe-style-input::placeholder {
+.stripe-style-input::placeholder,
+select,
+select option {
   color: var(--grey);
 }
 
@@ -594,21 +596,16 @@ border: none;
     right: .5rem;
 }
 
+
+select:invalid,
+select option[value=""] {
+    color: var(--grey) !important;
+}
 #payment-form .form-control,
 #card-element {
     color: var(--grey);
     border: 2px solid var(--orange);
     border-radius: var(--bs-border-radius);
-}
-
-select,
-select option {
-    color: #000000;
-}
-
-select:invalid,
-select option[value=""] {
-    color: #aab7c4 !important;
 }
 
 #loading-overlay {
