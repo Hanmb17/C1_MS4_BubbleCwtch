@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% load widget_tweaks %}
 
 {% block page_header %}
 <div class="container header-container">
@@ -21,4 +22,64 @@
             </div>
         </div>
     </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-6">
+                <p class="text-grey">Default Delivery Information</p>
+                <form class="mt-3" action="{% url 'profile' %}" method="POST" id="profile-update-form">
+                    {% csrf_token %}
+
+                    <!-- Section 2: Shipping Info -->
+                    {{ form.default_street_address1|attr:"aria-label:Street Address 1" }}
+                    {% for error in order_form.default_street_address1.errors  %}
+                        <span class="error-message">{{error}}</span>
+                    {% endfor %}
+
+                    {{ form.default_street_address2|attr:"aria-label:Street Address 2" }}
+                    {% for error in order_form.default_street_address2.errors  %}
+                        <span class="error-message">{{error}}</span>
+                    {% endfor %}
+
+                    {{ form.default_town_or_city|attr:"aria-label:Town or City" }}
+                    {% for error in order_form.default_town_or_city.errors  %}
+                        <span class="error-message">{{error}}</span>
+                    {% endfor %}
+                    
+                    {{ form.default_county|attr:"aria-label:County" }}
+                    {% for error in order_form.default_county.errors  %}
+                        <span class="error-message">{{error}}</span>
+                    {% endfor %}
+
+                    {{ form.default_postcode|attr:"aria-label:Postcode" }}
+                    {% for error in order_form.default_postcode.errors  %}
+                        <span class="error-message">{{error}}</span>
+                    {% endfor %}
+
+                    {{ form.default_country|attr:"aria-label:Country" }}
+                    {% for error in order_form.default_country.errors  %}
+                        <span class="error-message">{{error}}</span>
+                    {% endfor %}
+
+                    {{ form.default_phone_number|attr:"aria-label:Phone Number" }}
+                    {% for error in order_form.default_phone_number.errors  %}
+                        <span class="error-message">{{error}}</span>
+                    {% endfor %}
+
+                    {% if form.errors %}
+                        {% for error in profile_form.non_field_errors %}
+                            <span class="error-message">{{error}}</span>
+                        {% endfor %}
+                    {% endif %}
+
+                    <!-- Update Button -->
+                    <button type="submit" class="btn btn-cta my-3 w-100 rounded-pill">Update</button>
+                </form>
+                </div>
+                <div class="col-12 col-lg-6">
+                    <p class="text-grey">Order History</p>
+                    {{ orders }}
+                </div>
+                </div>
+                </div>
+
 {% endblock %}
