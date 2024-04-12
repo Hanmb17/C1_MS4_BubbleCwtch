@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-gzp3vg#&)4wql&$k63(oux=+ew6diz9(6qk-9d=avl2dd3cfn9
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-hanmb17-c1ms4bubblecwtc-73wfokbdzn3.ws-eu110.gitpod.io', 'bubble-cwtch.herokuapp.com']
+ALLOWED_HOSTS = ['8000-hanmb17-c1ms4bubblecwtc-73wfokbdzn3.ws-eu110.gitpod.io', 'bubble-cwtch-7479c697eb91.herokuapp.com', 'localhost', 'bubble-cwtch-7479c697eb91.herokuapp.com']
 
 
 # Application definition
