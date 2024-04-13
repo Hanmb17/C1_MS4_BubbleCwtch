@@ -114,7 +114,6 @@ def checkout(request):
         # Attempt to prefill the form with any info
         # the user maintains in their profile
         if request.user.is_authenticated:
-            print('User is auth')
             try:
                 profile = UserProfile.objects.get(user=request.user)
                 order_form = OrderForm(initial={
@@ -128,11 +127,9 @@ def checkout(request):
                     'street_address2': profile.default_street_address2,
                     'county': profile.default_county,
                 })
-                print(order_form)
             except UserProfile.DoesNotExist:
                 order_form = OrderForm()
         else:
-            print('USER IS NOT AUTH')
             order_form = OrderForm()
 
     if not stripe_public_key:
