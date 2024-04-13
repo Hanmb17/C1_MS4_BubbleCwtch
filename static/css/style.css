@@ -263,7 +263,7 @@ h6,
   display: none;
 }
 
-#id_remember {
+#id_remember, #id-save-info {
   width: 1.2em;
   height: 1.2em;
   background-color: var(--white); 
@@ -271,12 +271,15 @@ h6,
 }
 
 #id_remember:focus,
-#id_remember:hover {
+#id_remember:hover,
+#id-save-info:focus,
+#id-save-info:hover {
   border-color: var(--pink);
   box-shadow: none;
 }
 
-#id_remember:checked {
+#id_remember:checked,
+#id-save-info:checked {
   background-color: var(--dark-orange);
   border: none;
 }
@@ -668,6 +671,14 @@ select option[value=""] {
     margin: 0;
     height: 100%;
 }
+
+/* Profile Page */
+
+.order-history {
+  max-height: 500px;
+  overflow-y: auto;
+}
+
 
 /* Media Queries */
 

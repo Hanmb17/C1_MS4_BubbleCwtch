@@ -184,9 +184,15 @@
 </div>
     <div class="row m-0">
         <div class="col-12 col-lg-7 text-right">
-            <a href="{% url 'products' %}" class="btn btn-cta rounded-pill my-2">
-                <span class="text-grey">Back To Shop</span>
-            </a>
+            {% if from_profile %}
+                <a href="{% url 'profile' %}" class="btn btn-cta rounded-pill my-2">
+                    <span class="text-grey">Back to Profile</span>
+                </a>
+            {% else %}
+                <a href="{% url 'products' %}" class="btn btn-cta rounded-pill my-2">
+                    <span class="text-grey">Back To Shop</span>
+                </a>
+            {% endif %}
         </div>
     </div>
 </div>

@@ -74,12 +74,56 @@
                     <!-- Update Button -->
                     <button type="submit" class="btn btn-cta my-3 w-100 rounded-pill">Update</button>
                 </form>
+            </div>
+            <div class="col-12 col-lg-6">
+                <p class="text-grey">Order History</p>
+                <div class="table-responsive order-history mt-3">
+                    <table class="table-sm table-borderless font-body">
+                        <thead>
+                            <tr class="small-para-text">
+                                <th scope="col" class="">Order</th>
+                                <th scope="col" class="">Date</th>
+                                <th scope="col" class="">Item</th>
+                                <th scope="col" class="">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% if orders|length > 0 %}
+                                {% for order in orders %}
+                                    <tr class="">
+                                        <td class="py-2">
+                                            <a href="{% url 'order_history' order.order_number %}"
+                                            title="{{ order.order_number }}" class="text-decoration-none">
+                                                {{ order.order_number|truncatechars:6 }}
+                                            </a>
+                                        </td>
+                                        <td class="py-2">{{ order.date|date:"d/m/Y" }}</td>
+                                        <td class="py-2">
+                                            <ul class="list-unstyled mb-0">
+                                                {% for item in order.lineitems.all %}
+                                                    <li class="">
+                                                        {{ item.quantity }} x {{ item.product.name }}
+                                                    </li>
+                                                {% endfor %}
+                                            </ul>
+                                        </td>
+                                        <td class="py-2 text-end">£{{ order.grand_total }}</td>
+                                    </tr>
+                                {% endfor %}
+                        {% else %}
+                            <!-- No Orders Text -->
+                            <tr class="col-12 text-center">
+                                <td colspan="5">
+                                    <p class="font-body mt-3">You haven't placed any orders yet... <br> <a href="{% url 'products' %}" class="weight-semibold text-blue text-decoration-none text-link-blue">Go Shopping!</a></p>
+                                </td>
+                                
+                            </tr>
+                        {% endif %}
+                        </tbody>
+                    </table>
                 </div>
-                <div class="col-12 col-lg-6">
-                    <p class="text-grey">Order History</p>
-                    {{ orders }}
-                </div>
-                </div>
-                </div>
+            </div>
+        </div>
+    </div>
 
 {% endblock %}

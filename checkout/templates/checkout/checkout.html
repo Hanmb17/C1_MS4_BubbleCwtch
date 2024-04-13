@@ -163,6 +163,18 @@
                         </div>
                     {% endfor %}
                 </div>
+
+                <div class="mb-2 d-flex align-items-start justify-content-start">
+                    {% if user.is_authenticated %}
+                        <input class="form-check-input me-2" type="checkbox" id="id-save-info" name="save-info" checked>
+                        <label class="form-check-label text-muted" for="id-save-info">Save this delivery information to my profile</label>
+                    {% else %}
+                        <label class="form-check-label" for="id-save-info">
+                            <a class="" href="{% url 'account_signup' %}">Create an account</a> or 
+                            <a class="" href="{% url 'account_login' %}">login</a> to save this information
+                        </label>
+                    {% endif %}
+                </div>
             </fieldset>
          
             <!-- Section 3: Payment Details -->
