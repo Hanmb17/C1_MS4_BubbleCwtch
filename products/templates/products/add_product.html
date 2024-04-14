@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_title %}- Add product{% endblock %}
+
+{% block page_header %}
+<div class="container header-container">
+    <div class="row">
+        <div class="col"></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+
+<div class="container px-0 py-2">
+    <hr>
+    <h2>Product Management For Bubble Cwtch</h2>
+    <h4>Add a product</h4>
+    <hr>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-md-6 bg-orange rounded-2 mb-3">
+            <p class="text-grey">Please fill the form below to add a new product</p>
+            <form action="{% url 'add_product' %}" method="POST" id="add-product-form" class="form mb-3"
+                enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <!-- Category -->
+                {{ form.category.label_tag }}
+                {{ form.category }}
+                {% for error in form.category.errors  %}
+                <span class="error-message">{{error}}</span>
+                {% endfor %}
+
+                <!-- Name -->
+                {{ form.name.label_tag }}
+                {{ form.name }}
+                {% for error in form.name.errors  %}
+                <span class="error-message">{{error}}</span>
+                {% endfor %}
+
+                <!-- Description -->
+                {{ form.description.label_tag }}
+                {{ form.description }}
+                {% for error in form.description.errors  %}
+                <span class="error-message">{{error}}</span>
+                {% endfor %}
+
+                <!-- Price -->
+                {{ form.price.label_tag }}
+                {{ form.price }}
+                {% for error in form.price.errors  %}
+                <span class="error-message">{{error}}</span>
+                {% endfor %}
+
+                <!-- Is Featured? -->
+                <span class="d-flex mt-3 mb-3">
+                    {{ form.is_featured }}
+                    <span class="text-grey ms-2">{{ form.is_featured.label_tag }}</span>
+                </span>
+                {% for error in form.is_featured.errors  %}
+                    <span class="error-message">{{error}}</span>
+                {% endfor %}
+
+                <!-- Image -->
+                <div class="mb-3">
+                {{ form.image.label_tag }}
+                {{ form.image }}
+                </div>
+
+                <!-- URL for image -->
+                {{ form.image_url_tag }}
+                {{ form.image_url }}
+                {% for error in form.image_url.errors  %}
+                <span class="error-message">{{error}}</span>
+                {% endfor %}
+
+                <!-- Discontinued -->
+                <span class="d-flex mt-3 mb-2 error-message">
+                    {{ form.discontinued }}
+                    <span class="ms-3 checkbox-label d-flex align-items-end">{{ form.discontinued.label_tag }}</span>
+    
+                </span>
+                <em>Selecting this option hides the product from public view, making it accessible only in the admin panel.</em>
+                {% for error in form.discontinued.errors  %}
+                    <span class="error-message">{{error}}</span>
+                {% endfor %}
+
+
+                <!-- Buttons -->
+                <div class="mt-3 d-flex align-items-center justify-content-between"">
+
+                    <!-- Cancel Button -->
+                    <a href="{% url 'products' %}" class="btn btn-outline-cta my-3 rounded-pill">
+                        Cancel
+                    </a>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn btn-cta my-3 w-50 rounded-pill">
+                        Add Product
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
+
+{% block postloadjs %}
+
+
+{% endblock %}
