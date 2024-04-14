@@ -45,7 +45,14 @@
         <!-- Product Description -->
         <p class="mt-3">{{ product.description }}</p>
 
-        <!-- Add To Bag Link -->
+        <!-- Product edit and delete links -->
+
+        {% if request.user.is_superuser %}
+        <small class="ml-3 d-flex justify-content-between">
+          <a href="{% url 'edit_product' product.id %}">Edit</a>
+          <a class="text-danger" href="{% url 'delete_product' product.id %}">Delete</a>
+        </small>
+        {% endif %}
 
         <!-- Add item to bag form -->
         <form class="form" action="{% url 'add_to_bag' product.id %}" method="POST">
@@ -63,9 +70,8 @@
                     <i class="fas fa-minus"></i>
                   </button>
                 </div>
-                <input class="form-control qty_input font-body weight-semibold id_qty_{{ product.id }}"
-                  type="number" name="quantity" value="1" min="1" max="99" data-item_id="{{ product.id }}"
-                  aria-label="Quantity">
+                <input class="form-control qty_input font-body weight-semibold id_qty_{{ product.id }}" type="number"
+                  name="quantity" value="1" min="1" max="99" data-item_id="{{ product.id }}" aria-label="Quantity">
                 <div class="input-group-append">
                   <button
                     class="increment-qty bg-grey text-white weight-bold btn rounded-0 increment-qty_{{ product.id }}"
@@ -106,6 +112,6 @@
 {% endblock %}
 
 {% block extra_js %}
-    <!-- Quantity Input JS -->
-    <script src="{% static 'products/js/quantity_input.js' %}"></script>
+<!-- Quantity Input JS -->
+<script src="{% static 'products/js/quantity_input.js' %}"></script>
 {% endblock %}
