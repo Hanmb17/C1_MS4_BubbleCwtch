@@ -12,7 +12,7 @@
                 <!-- Remove Image Checkbox -->
                 <div class="mt-3">
                     <input class="form-check-input m-0" type="checkbox" name="{{ widget.checkbox_name }}" id="{{ widget.checkbox_id }}">
-                    <label class="m-0 text-warning ms-2" for="{{ widget.checkbox_id }}">{{ widget.clear_checkbox_label }}</label>
+                    <label class="m-0 text-danger ms-2" for="{{ widget.checkbox_id }}">{{ widget.clear_checkbox_label }}</label>
                 </div>
             {% endif %}
         </div>
@@ -22,7 +22,7 @@
     {% endif %}
 
     <!-- Select Image Button -->
-    <span class="btn btn-file btn-outline-cta w-100 rounded-2">
+    <span class="btn btn-file btn-outline-cta bg-white rounded-2">
         Select Image <input id="new-image" type="{{ widget.type }}" name="{{ widget.name }}"{% include "django/forms/widgets/attrs.html" %}>
     </span>
     <p class="text-danger mt-3" id="filename"></p>
