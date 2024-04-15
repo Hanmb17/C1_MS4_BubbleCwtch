@@ -17,7 +17,7 @@ class StripeWH_Handler:
     def __init__(self, request):
         self.request = request
 
-     # Private method to send user information email when placing order
+    # Private method to send user information email when placing order
     def _send_confirmation_email(self, order):
         """Send the user a confirmation email"""
         cust_email = order.email
@@ -73,7 +73,7 @@ class StripeWH_Handler:
         billing_details = stripe_charge.billing_details
         shipping_details = intent.shipping
 
-         # Get the total charge
+        # Get the total charge
         grand_total = round(stripe_charge.amount / 100, 2)
 
         # Clean data in the shipping details
@@ -140,15 +140,14 @@ class StripeWH_Handler:
                 content=f'Webhook received: {event["type"]} | ' +
                 'SUCCESS: Verified order already in database',
                 status=200)
-
         # If order is not found in DB create order
         else:
             order = None
             # Attempts to create order
             try:
                 order = Order.objects.create(
-                    user_profile=profile,
                     full_name=shipping_details.name,
+                    user_profile=profile,
                     email=billing_details.email,
                     phone_number=shipping_details.phone,
                     country=shipping_details.address.country,
@@ -180,8 +179,7 @@ class StripeWH_Handler:
                     status=500)
         self._send_confirmation_email(order)
         return HttpResponse(
-            content=(f'Webhook received: {event["type"]} | SUCCESS: '
-                     'Created order in webhook'),
+            content=(f'Webhook received: {event["type"]} | SUCCESS: Created order in webhook'),
             status=200)
 
     def handle_payment_intent_payment_failed(self, event):
@@ -190,6 +188,5 @@ class StripeWH_Handler:
         """
         
         return HttpResponse(
-            content=(f'Webhook received: {event["type"]} | SUCCESS: '
-                     'Created order in webhook'),
+            content=f'Webhook received: {event["type"]}',
             status=200)
