@@ -4,7 +4,11 @@
 
 {% block head_title %}{% trans "Sign Up Closed" %}{% endblock %}
 
-{% block content %}
+{% block extra_meta %}
+    <meta name="description" content="Bubble Cwtch account Sign up is currently full">
+{% endblock %}
+
+{% block inner_content %}
 <h1>{% trans "Sign Up Closed" %}</h1>
 
 <p>{% trans "We are sorry, but the sign up is currently closed." %}</p>
