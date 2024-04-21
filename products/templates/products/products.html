@@ -16,7 +16,7 @@
   <div class="container-fluid align-items-center justify-content-center justify-content-md-start">
     <div class="row g-0">
       <div class="col-12 my-auto">
-        <h2>All Products</h2>
+        <h2 class="mt-2">All Products</h2>
       </div>
       <div class="row g-0">
         <!-- Sort-dropdown -->
@@ -44,9 +44,13 @@
             </select>
           </div>
         </div>
-        <div
-          class="col-12 col-md-6 order-md-first d-flex align-items-end justify-content-center justify-content-md-start my-2 my-md-0">
-          add product count and detail here
+         <!-- Products link & No. of Products -->
+         <div class="col-12 col-md-6 order-md-first d-flex align-items-end justify-content-center justify-content-md-start my-2 my-md-0">
+          {% if search_term or current_category or current_sorting != 'None_None' %}
+              <a href="{% url 'products' %}" class=""><p class=" mb-1 me-2">All Products </p></a>
+              <p class="mb-1 mt-sm-2 me-2">|</p>
+          {% endif %}
+          <p class= "mb-1 mt-sm-2">{{ products|length }} Products{% if search_term %} found for <strong>"{{ search_term }}"</strong>{% endif %}</p>
         </div>
       </div>
     </div>

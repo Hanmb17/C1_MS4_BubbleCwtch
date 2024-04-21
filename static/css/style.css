@@ -530,11 +530,11 @@ h6,
 /* Products Page */ 
 
 .box-border-deselected {
-  border: 1px solid var(--grey) !important;
+  border: 1px solid var(--dark-orange) !important;
 }
 
 .box-border-selected {
-  border: 1px solid var(--dark-orange) !important;
+  border: 1px solid var(--pink) !important;
 }
 
 .sort-select-wrapper {
