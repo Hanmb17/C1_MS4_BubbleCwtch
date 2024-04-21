@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_title %}- 403, Sorry your request is forbidden!{% endblock %}
+
+{% block extra_meta %}
+    <meta name="description" content="Bubble Cwtch - 403 - request forbidden">
+{% endblock %}
+
+{% block page_header %}
+<div class="container header-container">
+  <div class="row">
+    <div class="col"></div>
+  </div>
+</div>
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid min-height text-center">
+
+    <!-- Error Page Content -->
+    <div class="d-flex justify-content-center align-items-center mb-3 mt-4">
+        <h1 class="text-center mx-3">403</h1>
+    </div>
+    <h2>Oops! Access Forbidden</h2>
+    <p>Looks like bath bombs are hiding this page from you!</p>
+    <p>Feel free to explore other areas of our site.</p>
+    
+    <!-- Home Button -->
+    <div class="m-4">
+        <a href="{% url 'home' %}" class="btn btn-lg btn-cta rounded-pill text-grey">
+            <p class="d-inline">Take Me Home</p>
+        </a>
+    </div>
+</div>
+{% endblock %}
