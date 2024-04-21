@@ -114,7 +114,7 @@
               <input type="hidden" name="quantity" value="1">
 
               <!-- Hidden input to redirect user back to current page once added to bag -->
-              <input type="hidden" name="redirect_url" value="{{ request.path }}">
+              <input type="hidden" name="redirect_url" value="{{ request.get_full_path }}">
 
               <!-- Add to Bag Button -->
               <button type="submit" class="btn btn-lg btn-cta rounded-pill text-grey">Add to bag</button>
