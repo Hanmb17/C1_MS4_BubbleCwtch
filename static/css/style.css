@@ -516,8 +516,6 @@ h6,
   height: 168px;
 }
 
-/* Home Page */
-
 .home-hero {
   max-width: 100vw;
   height: 501px;
@@ -527,6 +525,9 @@ h6,
   background-size: cover;
 }
 
+.min-height {
+  min-height: calc( 100vh - 168px - 241px);
+}
 /* Products Page */ 
 
 .box-border-deselected {
@@ -718,6 +719,10 @@ select option[value=""] {
   .header-container {
     height: 139px;
   }
+
+  .min-height {
+    min-height: calc( 100vh - 139px - 313px);
+  }
 }
 
 /* Medium devices (tablets, 768px and up) */
@@ -725,11 +730,19 @@ select option[value=""] {
   .header-container {
     height: 142px;
   }
+
+  .min-height {
+    min-height: calc( 100vh - 142px - 241px);
+  }
 }
 
 @media (max-width: 295px) {
   .header-container {
     height: 129px;
+  }
+
+  .min-height {
+    min-height: calc( 100vh - 129px - 241px);
   }
  
 }
