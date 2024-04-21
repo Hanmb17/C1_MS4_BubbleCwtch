@@ -12,12 +12,15 @@ def bag_contents(request):
 
     for item_id, item_data in bag.items():
         product = get_object_or_404(Product, pk=item_id)
+        quantity = item_data
+        lineitem_total = product.price * quantity
         total += item_data * product.price
         product_count += item_data
         bag_items.append({
             'item_id': item_id,
             'quantity': item_data,
             'product': product,
+            'lineitem_total': lineitem_total,
         })
 
 
