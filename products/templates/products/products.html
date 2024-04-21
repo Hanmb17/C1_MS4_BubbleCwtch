@@ -32,6 +32,7 @@
         {% endif %}
       </div>
    </div>
+   {% if products %}
       <div class="row g-0">
         <!-- Sort-dropdown -->
         <div
@@ -124,7 +125,16 @@
         </div>
       </div>
       {% endfor %}
-
+      {% else %}
+     <!-- No Search Results Message -->
+     <div class="row g-0 justify-content-center">
+       <div class="col-12 text-center my-4">
+        <p>Oops! It looks like we couldn't find any products matching your search criteria.</p>
+        <p>Explore our full range of delightful <a href="{% url 'products' %}" class="text-decoration-none text-primary">products</a>.</p>
+        <p>Let the hugs begin!</p>
+       </div>
+     </div>
+     {% endif %}
     </div>
   </div>
 </div>
