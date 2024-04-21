@@ -2,6 +2,9 @@
 {% load static %}
 
 {% block extra_title %}- Home{% endblock %}
+{% block extra_meta %}
+    <meta name="description" content="Check out our range of product.">
+{% endblock %}
 
 {% block page_header %}
 <div class="container header-container">
@@ -16,8 +19,19 @@
   <div class="container-fluid align-items-center justify-content-center justify-content-md-start">
     <div class="row g-0">
       <div class="col-12 my-auto">
-        <h2 class="mt-2">All Products</h2>
+        <!-- Update Heading -->
+        {% if current_category %}
+            <!-- Display category name if a category is selected -->
+            <h2 class="mt-2">All {{ current_category.friendly_name }}</h2>
+        {% elif search_term %}
+            <!-- Display search results if a search term is entered -->
+            <h2 class="mt-2">All Search Results</h2>
+        {% else %}
+            <!-- Default title for all products -->
+            <h2 class="mt-2">All Products</h2>
+        {% endif %}
       </div>
+   </div>
       <div class="row g-0">
         <!-- Sort-dropdown -->
         <div
