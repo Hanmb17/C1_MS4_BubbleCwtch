@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_title %}- 404, Sorry this gage doesn't exist!{% endblock %}
+
+{% block extra_meta %}
+    <meta name="description" content="Bubble Cwtch - 404">
+{% endblock %}
+
+{% block page_header %}
+<div class="container header-container">
+  <div class="row">
+    <div class="col"></div>
+  </div>
+</div>
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid min-height text-center">
+
+    <!-- Error Page Content -->
+    <div class="d-flex justify-content-center align-items-center mb-3 mt-4">
+        <h1 class="text-center mx-3">404</h1>
+    </div>
+    <h2>Oops! Page Not Found</h2>
+    <p>We're sorry, but the page you're looking for seems to have gone for a bubble bath!</p>
+    <p>Why not explore some of our exciting products instead?</p>
+    
+    <!-- Home Button -->
+    <div class="m-4">
+        <a href="{% url 'home' %}" class="btn btn-lg btn-cta rounded-pill text-grey">
+            <p class="d-inline">Take Me Home</p>
+        </a>
+    </div>
+</div>
+{% endblock %}
