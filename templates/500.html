@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_title %}- 500, Internal Error!{% endblock %}
+
+{% block extra_meta %}
+    <meta name="description" content="Bubble Cwtch - 500">
+{% endblock %}
+
+{% block page_header %}
+<div class="container header-container">
+  <div class="row">
+    <div class="col"></div>
+  </div>
+</div>
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid min-height text-center">
+
+    <!-- Error Page Content -->
+    <div class="d-flex justify-content-center align-items-center mb-3 mt-4">
+        <h1 class="text-center mx-3">500</h1>
+    </div>
+    <h2>Uh-oh! Something went wrong...</h2>
+    <p>It seems our bath bombs have fizzed their way into the server!</p>
+    <p>Our team is working hard to fix this issue.</p>
+    
+    <!-- Home Button -->
+    <div class="m-4">
+        <a href="{% url 'home' %}" class="btn btn-lg btn-cta rounded-pill text-grey">
+            <p class="d-inline">Take Me Home</p>
+        </a>
+    </div>
+</div>
+{% endblock %}
