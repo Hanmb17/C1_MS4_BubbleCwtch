@@ -4,28 +4,88 @@
 {% block extra_title %}- Home{% endblock %}
 
 {% block page_header %}
-    <div class="container header-container">
-        <div class="row">
-            <div class="col"></div>
-        </div>
+<div class="container header-container">
+    <div class="row">
+        <div class="col"></div>
     </div>
+</div>
 {% endblock %}
 
 {% block content %}
-<div class="container-fluid home-hero d-flex align-items-center justify-content-center justify-content-md-start">
+<div class="container-fluid home-hero px-2 d-flex align-items-center justify-content-center justify-content-md-start">
     <div class="row g-0">
-        <div class="col-12 my-auto">
+        <div class="col-12 my-auto px-2">
             <h1 class="display-4 logo-font text-grey">
                 Explore Bubble Cwtch
                 <br><span class="display-6">Where Bath Time Becomes a Warm Hug</span>
             </h1>
             <div class="my-5">
                 <h4>
-                    <a href="{% url 'products' %}" class="btn btn-lg btn-cta rounded-pill py-3 text-grey">Shop All Products</a>
+                    <a href="{% url 'products' %}" class="btn btn-lg btn-cta rounded-pill py-3 text-grey">Shop All
+                        Products</a>
                 </h4>
             </div>
         </div>
     </div>
+</div>
+<!--Featurd Products Section-->
+<div class="container-fluid bg-orange p-2">
+    <div class="row g-0">
+        <div class="col-12 my-auto px-2">
+            <h2 class="text-center" >This Month We Are Loving!</h2>
+        </div>
+        <!--Featurd Product cards-->
+        {% for product in products %}
+        <div class="col-sm-6 col-md-4  col-lg-3 px-2 py-3">
+            <div class="card bg-orange product-card h-100">
+                <div class="bg-clear">
+                </div>
+                <div class="text-center">
+                    <!-- Product Image -->
+                    {% if product.image %}
+                    <a href="{% url 'product_detail' product.id %}">
+                        <img class="card-img-top product-img" src="{{ product.image.url }}" alt="{{ product.name }}"
+                            onerror="this.onerror=null;this.src='{{ STATIC_URL }}media/cwtch_in_the_valley.png'">
+                    </a>
+                    {% else %}
+                    <a href="{% url 'product_detail' product.id %}">
+                        <img class="card-img-top product-img" src="{% static 'media/cwtch_in_the_valley.png' %}"
+                            alt="{{ product.name }}">
+                    </a>
+                    {% endif %}
+                </div>
+                <div
+                    class="card-body product-card-body rounded-2 {% if product.category.friendly_name == 'Bath Bombs' %} bg-purple {% elif product.category.friendly_name == 'Soaps' %} bg-blue {% elif product.category.friendly_name == 'Shower Jellies' %} bg-green {% endif %}">
+                    <div class="">
+                        <h4 class="product-title text-grey">{{ product.name }}</h4>
+                        <h5 class="text-grey"> {{ product.category.friendly_name}} </h5>
+                        <p class="card-text text-grey"><strong>£{{ product.price }}</strong></p>
+                        <small class="text-muted text-grey">Average Rating: {{ product.average_rating }}
+                            ({{ product.num_reviews }}
+                            reviews)</small>
+                    </div>
+                </div>
+                <div class="card-footer product-card-footer text-center">
+
+                    <form class="form" action="{% url 'add_to_bag' product.id %}" method="POST">
+                        {% csrf_token %}
+
+                        <!-- Quantity Input (set to 1) -->
+                        <input type="hidden" name="quantity" value="1">
+
+                        <!-- Hidden input to redirect user back to current page once added to bag -->
+                        <input type="hidden" name="redirect_url" value="{{ request.get_full_path }}">
+
+                        <!-- Add to Bag Button -->
+                        <button type="submit" class="btn btn-lg btn-cta rounded-pill text-grey">Add to bag</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
 </div>
 
 {% endblock %}
