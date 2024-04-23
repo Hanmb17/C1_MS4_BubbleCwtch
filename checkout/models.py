@@ -12,6 +12,16 @@ from profiles.models import UserProfile
 # Create your models here.
 
 class Order(models.Model):
+
+    # Choices for order status
+    STATUS_CHOICES = [
+        ('new', 'New - Order received, awaiting processing'),
+        ('processing', 'Processing - Order is being prepared for shipment'),
+        ('shipped', 'Shipped - Order has been shipped to the customer'),
+        ('delivered', 'Delivered - Order has been successfully delivered'),
+        ('cancelled', 'Cancelled - Order was cancelled by customer or admin'),
+    ]
+
     order_number = models.CharField(
         max_length=32,
         null=False,
@@ -87,6 +97,13 @@ class Order(models.Model):
         decimal_places=2,
         null=False, default=0
     )
+
+    status = models.CharField(
+        max_length=20, 
+        choices=STATUS_CHOICES, 
+        default='new'
+    )
+    
     original_bag = models.TextField(null=False, blank=False, default='')
     stripe_pid = models.CharField(max_length=254, null=False, blank=False, default='')
 
