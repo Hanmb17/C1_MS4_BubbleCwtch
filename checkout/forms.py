@@ -50,3 +50,17 @@ class OrderForm(forms.ModelForm):
 
             # Removes labels from inputs
            # self.fields[field].label = False
+
+class OrderStatusUpdateForm(forms.ModelForm):
+    """
+    Form for updating the status of an Order model instance.
+    Only intended to be used by admin.
+    """
+
+    class Meta:
+        model = Order
+        fields = ['status']
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['status'].widget.attrs.update({'class': 'input-form mb-3 mt-2 px-2 py-2 text-grey rounded-2'})

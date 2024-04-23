@@ -1,4 +1,3 @@
-
 {% load static %}
 
 <!-- Mobile Nav Bar -->
@@ -51,6 +50,7 @@
                     <div class="dropdown-menu bg-grey border-0" aria-labelledby="user-options" id="mobileLoginMenu">
                         {% if request.user.is_authenticated %}
                         {% if request.user.is_superuser %}
+                        <a href="{% url 'add_product' %}" class="dropdown-item nav-link-item">Product Management</a>
                         <a href="{% url 'admin:index' %}" class="dropdown-item nav-link-item">Admin Dashboard</a>
                         {% endif %}
                         <a href="{% url 'profile' %}" class="dropdown-item nav-link-item">My Profile</a>
