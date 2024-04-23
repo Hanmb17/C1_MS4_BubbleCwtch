@@ -1,3 +1,4 @@
+
 {% load static %}
 
 <!-- Mobile Nav Bar -->
@@ -17,7 +18,7 @@
     <!-- Logo -->
     <div class=" col my-auto text-center">
         <a href="{% url 'home' %}" class="nav-link">
-            <img src="{% static 'media/logo.png' %}" alt="Bubble Cwtch Logo" class="logo">
+            <img src="{% static 'media/logo.png' %}" alt="Bubble Cwtch Logo" class="logo"  aria-hidden="true">
             <h2 class="text-white d-none d-sm-block">Bubble Cwtch</h2>
         </a>
     </div>
@@ -30,7 +31,7 @@
             <li class="list-inline-item">
                 <!-- Add data-toggle and href attributes to trigger the collapse -->
                 <a class="text-white nav-link" href="#collapseSearch" role="button" aria-expanded="false"
-                    aria-controls="collapseSearch" data-bs-toggle="collapse">
+                    aria-controls="collapseSearch" data-bs-toggle="collapse" aria-label="Search">
                     <div class="text-center">
                         <div><i class="fa-solid fa-magnifying-glass"></i></div>
                     </div>
@@ -42,7 +43,7 @@
             <li class="list-inline-item dropdown">
                 <div>
                     <a class="text-white nav-link" href="#" id="user-options-mobile" data-bs-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
+                        aria-haspopup="true" aria-expanded="false" aria-label="Account Menu">
                         <div class="text-center">
                             <div><i class="fas fa-user"></i></div>
                         </div>
@@ -65,9 +66,9 @@
 
             <!-- Shopping Bag -->
             <li class="list-inline-item">
-                <a class="nav-link heart-background" href="{% url 'view_bag' %}">
+                <a class="nav-link heart-background" href="{% url 'view_bag' %}" aria-label="View Shopping Bag">
                     <div class="heart">
-                        <div class="bag-icon"><i class="fas fa-shopping-bag fa-lg text-grey"></i></div>
+                        <div class="bag-icon"><i class="fas fa-shopping-bag fa-lg text-grey" aria-hidden="true"></i></div>
                     </div>
                     <p
                         class="my-0 bag-total text-white {% if grand_total %}weight-bold{% else %}weight-regular{% endif %}">
