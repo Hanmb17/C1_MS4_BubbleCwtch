@@ -9,6 +9,7 @@
   --dark-orange: #FFA533;
   --light-orange: #FFEBD1;
   --light-grey: #d8d8d8;
+  --light-pink: #ffd9ec;
 }
 
 
@@ -48,7 +49,7 @@
 }
 
 .bg-orange {
-  background-color: var(--light-orange);
+  background-color: var(--light-orange) !important; 
 }
 
 .bg-clear {
@@ -58,9 +59,14 @@
 .bg-light-grey {
   background-color: var(--light-grey);
 }
+
+.bg-light-pink {
+  background-color: var(--light-pink);
+}
 /* Border colour classes */
 
-.border-pink {
+.border-pink,
+hr {
   border: 1px solid var(--pink)
 }
 

@@ -23,7 +23,12 @@ def profile(request):
                 request, 'Update failed. Please check the form.')
     else:
         form = UserProfileForm(instance=profile)
-    orders = profile.orders.all()
+    
+    if request.user.is_superuser:
+        # Superuser sees all orders sorted by date (most recent first)
+        orders = Order.objects.order_by('-date')
+    else:
+        orders = profile.orders.all()
 
     template = 'profiles/profile.html'
     context = {
