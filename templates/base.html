@@ -66,7 +66,8 @@
         <form method="GET" action="{% url 'products' %}">
           <div class="overflow-hidden bg-white border-pink rounded-pill">
             <div class="input-group w-100">
-              <input class="form-control border-0" type="text" name="q" placeholder="Search our products" aria-label="Search our products">
+              <input class="form-control border-0" type="text" name="q" placeholder="Search our products"
+                aria-label="Search our products">
               <div class="input-group-append">
                 <button class="form-control border-0 btn btn-search" type="submit">
                   <span class="sr-only">Search</span>
@@ -109,7 +110,7 @@
               <div class="heart">
                 <div class="bag-icon"><i class="fas fa-shopping-bag fa-lg text-grey"></i></div>
               </div>
-              <p class="my-1">
+              <p class="my-1 bag-total text-white {% if grand_total %}weight-bold{% else %}weight-regular{% endif %}">
                 {% if grand_total %}
                 £{{ grand_total|floatformat:2 }}
                 {% else %}
@@ -139,7 +140,8 @@
       <form method="GET" action="{% url 'products' %}">
         <div class="overflow-hidden bg-white border-pink rounded-pill m-auto" id="searchBarMobile">
           <div class="input-group">
-            <input class="form-control border-0" type="text" name="q" placeholder="Search our site" aria-label="Search our products">
+            <input class="form-control border-0" type="text" name="q" placeholder="Search our site"
+              aria-label="Search our products">
             <div class="input-group-append">
               <button class="form-control border-0 btn btn-search" type="submit">
                 <span class="sr-only">Search</span>
@@ -195,7 +197,7 @@
               class="text-grey contact-links link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">info@bubblecwtch.com</a>
           </p>
           <p>Phone: <a href="tel:+1234678942"
-              class="contact-links text-dark link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">+441234
+              class="contact-links text-grey link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">+441234
               678 942</a></p>
           <div class="footer-social-icons">
             <a href="https://www.facebook.com/" target="_blank" class="text-grey me-3" aria-label="Facebook"><i
@@ -222,8 +224,8 @@
     });
   </script>
 
-   <!-- Stripe JS -->
-   <script src="https://js.stripe.com/v3/"></script>
+  <!-- Stripe JS -->
+  <script src="https://js.stripe.com/v3/"></script>
   {% endblock %}
 
 </body>

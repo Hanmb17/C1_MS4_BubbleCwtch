@@ -19,10 +19,6 @@
   color: var(--grey);
 }
 
-.text-dark-grey {
-  color: var(--dark-grey);
-}
-
 .text-pink {
   color: var(--pink);
 }
@@ -557,7 +553,6 @@ h6,
   width: fit-content;
   height: 100%;
   padding: 5px 10px;
-  border: none !important;
   background: var(--white);
   appearance: none;
   -webkit-appearance: none;
