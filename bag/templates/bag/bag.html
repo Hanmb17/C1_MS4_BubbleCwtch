@@ -12,33 +12,32 @@
 {% endblock %}
 
 {% block content %}
-<div class="container py-5">
+<div class="text-center container min-height py-5">
     <hr>
     <h2>Shopping Bag</h2>
     <hr>
-
     {% if bag_items %}
     <div class="row">
         <div class="col-md-8 col-lg-6 offset-lg-1">
             {% for item in bag_items %}
-            <div class="card mb-3 bg-orange shopping_bag_card">
+            <div class="card mb-3 bg-orange shopping_bag_card text-start">
                 <div class="row g-0">
-                    <div class="col-md-4 text-center">
+                    <div class="col-4 p-2 text-center">
                         <!-- Product Image -->
                         {% if item.product.image %}
                         <img class="img-fluid" src="{{ item.product.image.url }}" alt="{{ item.product.name }}"
                             onerror="this.onerror=null;this.src='{{ STATIC_URL }}media/cwtch_in_the_valley.png'">
                         {% else %}
-                        <img class="img-fluid" src="{% static 'media/cwtch_in_the_valley.png' %}"
+                        <img class="img-fluid" src="{{ MEDIA_URL }}cwtch_in_the_valley.png"
                             alt="{{ item.product.name }}">
                         {% endif %}
                     </div>
-                    <div class="col-md-8">
+                    <div class="col-8">
                         <div class="card-body">
                             <div class="d-flex justify-content-between align-items-start">
                                 <div>
                                     <h5 class="product-title">{{ item.product.name }}</h5>
-                                    <form class="form update-form" method="POST" action="{% url 'update_bag' %}">
+                                    <form class="form update-form mb-2" method="POST" action="{% url 'update_bag' %}">
                                         {% csrf_token %}
                                         <div class="form-group">
                                             <div class="input-group input-group-{{ item.item_id }}">
@@ -69,11 +68,15 @@
                                         <!-- Add a hidden input field to identify the item -->
                                         <input type="hidden" name="item_id" value="{{ item.item_id }}">
                                     </form>
-
-                                    <p class="card-text text-grey">Quantity: {{ item.quantity }}</p>
-                                    <p class="card-text text-grey">Total Price: £{{ item.lineitem_total}}</p>
+                                    <p class="card-text mb-2 text-grey">Quantity: <span
+                                            class="fw-bold">{{ item.quantity }}</span></p>
+                                    <p class="card-text text-grey">Total Price: <span
+                                            class="fw-bold">£{{ item.lineitem_total}}</span></p>
                                 </div>
-                                <a class="remove-item text-grey" data-id="remove_{{ item.item_id }}"><i class="fa-solid fa-trash-can"></i></a>
+                                <a class="remove-item error-message" data-id="remove_{{ item.item_id }}"
+                                    aria-label="Remove item from shoppingbag">
+                                    <i class="fa-solid fa-lg fa-trash-can" aria-hidden="true"></i>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -82,7 +85,7 @@
             {% endfor %}
         </div>
         <div class="col-md-4">
-            <div class="card">
+            <div class="card text-start">
                 <div class="card-header bg-grey">
                     <h5 class="card-title text-white">Summary</h5>
                 </div>
@@ -91,11 +94,11 @@
                         <li
                             class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0 text-grey">
                             Products
-                            <span>£{{ grand_total|floatformat:2  }}</span>
+                            <span>£{{ grand_total|floatformat:2 }}</span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center px-0 text-grey">
                             Shipping
-                            <span>{% if delivery == 0 %}FREE{% else %}{{ delivery|floatformat:2  }}{% endif %}</span>
+                            <span>{% if delivery == 0 %}FREE{% else %}{{ delivery|floatformat:2 }}{% endif %}</span>
                         </li>
                         <li
                             class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3 text-grey">
@@ -106,11 +109,9 @@
                             <span><strong> £{{ grand_total|floatformat:2  }}</strong></span>
                         </li>
                     </ul>
-
                     <a href="{% url 'checkout' %}" class="btn w-100 btn-lg btn-cta rounded-pill text-grey mb-2">
                         Checkout
                     </a>
-
                     <a href="{% url 'products' %}" class="btn w-100 btn-outline-cta rounded-pill">
                         <span class="icon">
                             <i class="fas fa-chevron-left"></i>
@@ -122,7 +123,7 @@
         </div>
         {% else %}
         <p>Your bag is empty.</p>
-        <a href="{% url 'products' %}" class="btn w-100 btn-outline-cta rounded-pill">
+        <a href="{% url 'products' %}" class="btn px-2 px-sm-4 btn-outline-cta rounded-pill">
             <span class="icon">
                 <i class="fas fa-chevron-left"></i>
             </span>
@@ -131,29 +132,29 @@
         {% endif %}
     </div>
 </div>
-</div>
 {% endblock %}
 
-{% block extra_js %}
+{% block postloadjs %}
+{{ block.super }}
 <!-- Quantity Input JS -->
 <script src="{% static 'products/js/quantity_input.js' %}"></script>
 <script src="{% static 'bag/js/update_bag.js' %}"></script>
 <script>
-$(document).ready(function() {
-
-    // Remove item and reload on click
-    $('.remove-item').click(function(e) {
+    $(document).ready(function () {
+        // Remove item and reload on click
+        $('.remove-item').click(function (e) {
             var csrfToken = "{{ csrf_token }}";
             var itemId = $(this).attr('data-id').split('remove_')[1];
             var url = `/bag/remove/${itemId}/`;
-            var data = {'csrfmiddlewaretoken': csrfToken};
+            var data = {
+                'csrfmiddlewaretoken': csrfToken
+            };
 
             $.post(url, data)
-            .done(function() {
-                location.reload();
-            });
+                .done(function () {
+                    location.reload();
+                });
         });
     });
 </script>
-
 {% endblock %}
