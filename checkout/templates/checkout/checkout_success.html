@@ -2,7 +2,7 @@
 {% load static %}
 {% load widget_tweaks %}
 
-{% block extra_title %}- Shopping Bag{% endblock %}
+{% block extra_title %}- Checkout Sucess{% endblock %}
 
 {% block page_header %}
 <div class="container header-container">
@@ -15,10 +15,11 @@
 {% block content %}
 <div class="container text-center px-0 py-2">
     <hr>
-    <h2>Thank You</h2>
+    <h1>Thank You</h1>
     <hr>
     <p class="text-grey">Your order information is below. A confirmation email will be sent to
-        <strong>{{ order.email }}</strong>.</p>
+        <strong>{{ order.email }}</strong>.
+    </p>
 </div>
 <div class="container px-0 py-2">
     <div class="row">
@@ -48,8 +49,12 @@
             </div>
             <!--Order Status section - Admin can update -->
             <div class="row m-0">
-                <div class="col bg-light-pink p-2">
+                <div class="col p-2 {% if user.is_superuser %}bg-light-pink{% else %}bg-orange{% endif %}">
+                    {% if user.is_superuser %}
                     <h5 class="m-0">Update Order Status:</h5>
+                    {% else %}
+                    <h5 class="m-0">Order Status:</h5>
+                    {% endif %}
                 </div>
             </div>
             <div class="row m-0">
@@ -73,9 +78,6 @@
                     <h5 class="mb-0">Order Details:</h5>
                 </div>
             </div>
-
-
-
             {% for item in order.lineitems.all %}
             <div class="row m-0">
                 <div class="col-12 col-md-4">
@@ -209,11 +211,13 @@
     <div class="row m-0">
         <div class="col-12 col-lg-8 offset-lg-2 text-right">
             {% if from_profile %}
-            <a href="{% url 'profile' %}" class="btn btn-cta rounded-pill my-2">
+            <a href="{% url 'profile' %}" class="btn btn-cta rounded-pill my-2"
+                aria-label="Back to user profile">
                 <span class="text-grey">Back to Profile</span>
             </a>
             {% else %}
-            <a href="{% url 'products' %}" class="btn btn-cta rounded-pill my-2">
+            <a href="{% url 'products' %}" class="btn btn-cta rounded-pill my-2"
+                aria-label="Back to the shop">
                 <span class="text-grey">Back To Shop</span>
             </a>
             {% endif %}

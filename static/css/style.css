@@ -22,6 +22,10 @@
 .text-pink {
   color: var(--pink);
 }
+
+.text-link {
+  color: #0242A2;
+}
 /* Background Colour Classes */
 
 .bg-grey {

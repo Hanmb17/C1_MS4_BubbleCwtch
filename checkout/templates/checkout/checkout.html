@@ -1,7 +1,8 @@
 {% extends "base.html" %}
 {% load static %}
+{% load widget_tweaks %}
 
-{% block extra_title %}- Shopping Bag{% endblock %}
+{% block extra_title %}- Checkout Page{% endblock %}
 
 {% block page_header %}
 <div class="container header-container">
@@ -12,210 +13,200 @@
 {% endblock %}
 
 {% block content %}
-
-<div class="container px-0 py-2">
+<!-- Container for Checkout Header -->
+<div class="container text-center px-0 py-2">
     <hr>
-    <h2>Checkout</h2>
+    <h1>Checkout</h1>
     <hr>
 </div>
 
 <div class="container">
-<div class="row">
-    <div class="col-12 col-md-6 col-lg-5 offset-lg-1 order-1 px-0 px-md-2 py-3 py-md-0" >
-        <div class="card mb-3 bg-light-grey">
-            <div class="card-header">
-                <h5 class="card-title text-grey">Order Summary ({{ product_count }})</h5>
-            </div>
-            <div class="card-body bg-white">
-                {% for item in bag_items %}
-                <div class="row g-0 mb-1">
-                    <div class="col-2 text-center">
-                        <!-- Product Image -->
-                        {% if item.product.image %}
-                        <img class="img-fluid" src="{{ item.product.image.url }}" alt="{{ item.product.name }}"
-                            onerror="this.onerror=null;this.src='{{ STATIC_URL }}media/cwtch_in_the_valley.png'">
-                        {% else %}
-                        <img class="img-fluid" src="{% static 'media/cwtch_in_the_valley.png' %}"
-                            alt="{{ item.product.name }}">
-                        {% endif %}
-                    </div>
-                    <div class="col-9 offset-1">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div>
-                                <h5 class="product-title">{{ item.product.name }}</h5>
-                                <p class="card-text text-grey">Quantity: {{ item.quantity }}</p>
-                            </div>
-                            <p class="card-text text-grey">Total Price: £{{ item.lineitem_total }}</p>
-                        </div>
-                    </div>
+    <div class="row">
+        <!-- Order Summary Section -->
+        <div class="col-12 col-md-6 col-lg-4 order-1 px-0 px-md-2 py-3 py-md-0">
+            <div class="card mb-3 bg-grey">
+                <div class="card-header">
+                    <h5 class="card-title text-white">Order Summary ({{ product_count }})</h5>
                 </div>
-                <hr class="text-pink my-1">
-                {% endfor %}
-            </div>
-            <div class="card-footer bg-white" >
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0 text-grey">
-                        Products
-                        <span>£{{ grand_total|floatformat:2 }}</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center px-0 text-grey">
-                        Shipping
-                        <span>{% if delivery == 0 %}FREE{% else %}£{{ delivery|floatformat:2 }}{% endif %}</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 text-grey">
-                        <div>
-                            <strong>Total amount</strong>
-                            <p class="mb-0 small">(including VAT)</p>
+                <div class="card-body bg-white">
+                    {% for item in bag_items %}
+                    <!-- Individual Bag Item -->
+                    <div class="row g-0 mb-1">
+                        <div class="col-2 text-center">
+                            <!-- Product Image -->
+                            {% if item.product.image %}
+                            <img class="img-fluid" src="{{ item.product.image.url }}"
+                                alt="{{ item.product.name }}"
+                                onerror="this.onerror=null;this.src='{{ STATIC_URL }}media/cwtch_in_the_valley.png'">
+                            {% else %}
+                            <img class="img-fluid" src="{% static 'media/cwtch_in_the_valley.png' %}"
+                                alt="{{ item.product.name }}">
+                            {% endif %}
                         </div>
-                        <span><strong> £{{ grand_total|floatformat:2 }}</strong></span>
-                    </li>
-                </ul>
+                        <div class="col-9 offset-1">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h5 class="product-title">{{ item.product.name }}</h5>
+                                    <p class="card-text text-grey">Quantity: {{ item.quantity }}</p>
+                                </div>
+                                <p class="card-text text-grey">Total Price: £{{ item.lineitem_total }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="text-pink my-1">
+                    {% endfor %}
+                </div>
+                <!-- Order Summary -->
+                <div class="card-footer bg-white">
+                    <ul class="list-group list-group-flush">
+                        <li
+                            class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0 text-grey">
+                            Products
+                            <span>£{{ grand_total|floatformat:2 }}</span>
+                        </li>
+                        <li
+                            class="list-group-item d-flex justify-content-between align-items-center border-pink px-0 text-grey">
+                            Shipping
+                            <span>{% if delivery == 0 %}FREE{% else %}£{{ delivery|floatformat:2 }}{% endif %}</span>
+                        </li>
+                        <li
+                            class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 text-grey">
+                            <div>
+                                <strong>Total amount</strong>
+                                <p class="mb-0 small">(including VAT)</p>
+                            </div>
+                            <span><strong> £{{ grand_total|floatformat:2 }}</strong></span>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="col-12 col-md-6 bg-orange rounded-2 mb-3">
-        <p class="text-grey">Please fill out the form below to complete your order</p>
-        <form action="{% url 'checkout' %}" method="POST" id="payment-form">
-            {% csrf_token %}
-            
-            <!-- Section 1: Personal Information -->
-            <fieldset class="mb-2">
-                <legend class="text-grey header-font">Personal Information</legend>
-                <div class="mb-3">
-                    {{ order_form.full_name }}
-                    {% for error in order_form.full_name.errors %}
-                        <div class="invalid-feedback">
-                            {{ error }}
-                        </div>
-                    {% endfor %}
-                </div>
-                
-                <div class="mb-3">
-                    {{ order_form.email }}
-                    {% for error in order_form.email.errors %}
-                        <div class="invalid-feedback">
-                            {{ error }}
-                        </div>
-                    {% endfor %}
-                </div>
-            </fieldset>
-            
-            <!-- Section 2: Shipping Info -->
-            <fieldset class="mb-2">
-                <legend class="text-grey header-font">Shipping Information</legend>
-                <div class="mb-3">
-                    {{ order_form.phone_number }}
-                    {% for error in order_form.phone_number.errors %}
-                        <div class="invalid-feedback">
-                            {{ error }}
-                        </div>
-                    {% endfor %}
-                </div>
-                
-                <div class="mb-3">
-                    {{ order_form.street_address1 }}
-                    {% for error in order_form.street_address1.errors %}
-                        <div class="invalid-feedback">
-                            {{ error }}
-                        </div>
-                    {% endfor %}
-                </div>
-                
-                <div class="mb-3">
-                    {{ order_form.street_address2 }}
-                    {% for error in order_form.street_address2.errors %}
-                        <div class="invalid-feedback">
-                            {{ error }}
-                        </div>
-                    {% endfor %}
-                </div>
+        <!-- Checkout Form Section -->
+        <div class="col-12 col-md-6 col-lg-6 offset-lg-1 bg-orange rounded-2 mb-3">
+            <p class="text-grey">Please fill out the form below to complete your order</p>
+            <form action="{% url 'checkout' %}" method="POST" id="payment-form">
+                {% csrf_token %}
 
-                <div class="mb-3">
-                    {{ order_form.town_or_city }}
-                    {% for error in order_form.town_or_city.errors %}
-                        <div class="invalid-feedback">
-                            {{ error }}
-                        </div>
-                    {% endfor %}
-                </div>
-                <div class="mb-3">
-                    {{ order_form.county}}
-                    {% for error in order_form.county.errors %}
-                        <div class="invalid-feedback">
-                            {{ error }}
-                        </div>
-                    {% endfor %}
-                </div>
+                <!-- Section 1: Personal Information -->
+                <fieldset class="mb-2">
+                    <legend class="text-grey header-font">Personal Information</legend>
+                    <div class="mb-3">
+                        {{ order_form.full_name|attr:"aria-label:Full Name" }}
+                        {% for error in order_form.full_name.errors %}
+                        <span class="error-message">{{error}}</span>
+                        {% endfor %}
+                    </div>
 
-                <div class="mb-3">
-                    {{ order_form.postcode }}
-                    {% for error in order_form.postcode.errors %}
-                        <div class="invalid-feedback">
-                            {{ error }}
-                        </div>
-                    {% endfor %}
-                </div>
-                <div class="mb-3">
-                    {{ order_form.country }}
-                    {% for error in order_form.country.errors %}
-                        <div class="invalid-feedback">
-                            {{ error }}
-                        </div>
-                    {% endfor %}
-                </div>
+                    <div class="mb-3">
+                        {{ order_form.email|attr:"aria-label:Email" }}
+                        {% for error in order_form.email.errors %}
+                        <span class="error-message">{{error}}</span>
+                        {% endfor %}
+                    </div>
+                </fieldset>
 
-                <div class="mb-2 d-flex align-items-start justify-content-start">
-                    {% if user.is_authenticated %}
-                        <input class="form-check-input me-2" type="checkbox" id="id-save-info" name="save-info" checked>
-                        <label class="form-check-label text-muted" for="id-save-info">Save this delivery information to my profile</label>
-                    {% else %}
+                <!-- Section 2: Shipping Info -->
+                <fieldset class="mb-2">
+                    <legend class="text-grey header-font">Shipping Information</legend>
+                    <div class="mb-3">
+                        {{ order_form.phone_number|attr:"aria-label:Phone Number" }}
+                        {% for error in order_form.phone_number.errors %}
+                        <span class="error-message">{{error}}</span>
+                        {% endfor %}
+                    </div>
+
+                    <div class="mb-3">
+                        {{ order_form.street_address1|attr:"aria-label:Street Address 1" }}
+                        {% for error in order_form.street_address1.errors  %}
+                        <span class="error-message">{{error}}</span>
+                        {% endfor %}
+                    </div>
+
+                    <div class="mb-3">
+                        {{ order_form.street_address2|attr:"aria-label:Street Address 2" }}
+                        {% for error in order_form.street_address2.errors %}
+                        <span class="error-message">{{error}}</span>
+                        {% endfor %}
+                    </div>
+
+                    <div class="mb-3">
+                        {{ order_form.town_or_city|attr:"aria-label:Town or City" }}
+                        {% for error in order_form.town_or_city.errors %}
+                        <span class="error-message">{{error}}</span>
+                        {% endfor %}
+                    </div>
+                    <div class="mb-3">
+                        {{ order_form.county|attr:"aria-label:County" }}
+                        {% for error in order_form.county.errors %}
+                        <span class="error-message">{{error}}</span>
+                        {% endfor %}
+                    </div>
+
+                    <div class="mb-3">
+                        {{ order_form.postcode|attr:"aria-label:Postcode" }}
+                        {% for error in order_form.postcode.errors %}
+                        <span class="error-message">{{error}}</span>
+                        {% endfor %}
+                    </div>
+                    <div class="mb-3">
+                        {{ order_form.country|attr:"aria-label:Country" }}
+                        {% for error in order_form.country.errors %}
+                        <span class="error-message">{{error}}</span>
+                        {% endfor %}
+                    </div>
+
+                    <div class="mb-2 d-flex align-items-start justify-content-start">
+                        <!-- Save Delivery Information Checkbox (if user is authenticated) -->
+                        {% if user.is_authenticated %}
+                        <input class="form-check-input me-2" type="checkbox" id="id-save-info"
+                            name="save-info" checked>
+                        <label class="form-check-label text-muted" for="id-save-info">Save this delivery
+                            information to my profile</label>
+                        {% else %}
+                        <!-- Prompt to Create Account or Login -->
                         <label class="form-check-label" for="id-save-info">
-                            <a class="" href="{% url 'account_signup' %}">Create an account</a> or 
-                            <a class="" href="{% url 'account_login' %}">login</a> to save this information
+                            <a class="text-link" href="{% url 'account_signup' %}">Create an account</a> or
+                            <a class="text-link" href="{% url 'account_login' %}">login</a> to save this
+                            information
                         </label>
-                    {% endif %}
-                </div>
-            </fieldset>
-         
-            <!-- Section 3: Payment Details -->
-            <fieldset class="mb-3">
-                <legend class="text-grey header-font">Payment</legend>
-                
-                <!-- Stripe Card Input -->
-                <div class="" id="card-element"></div>
+                        {% endif %}
+                    </div>
+                </fieldset>
 
-                <!-- Form Errors -->
-                <div class="error-message mt-1" id="card-errors" role="alert"></div>
+                <!-- Section 3: Payment Details -->
+                <fieldset class="mb-3">
+                    <legend class="text-grey header-font">Payment</legend>
+                    <!-- Stripe Card Input -->
+                    <div class="" id="card-element"></div>
+                    <!-- Form Errors -->
+                    <div class="error-message mt-1" id="card-errors" role="alert"></div>
+                    <!-- Client Secret (hidden field to pass to view) -->
+                    <input type="hidden" value="{{ client_secret }}" name="client_secret">
+                </fieldset>
 
-                <!-- Client Secret - hidden element to pass to view -->
-                <input type="hidden" value="{{ client_secret }}" name="client_secret">
-
-            </fieldset>
-        
-            
-            <button type="submit" class="btn btn-cta my-3 w-100 rounded-pill">Submit Order</button>
-        </form>
+                <!-- Submit Order Button -->
+                <button type="submit" class="btn btn-cta my-3 w-100 rounded-pill"
+                    aria-label="Submit Order">Submit
+                    Order</button>
+            </form>
+        </div>
     </div>
-
-
 </div>
-</div>
- <!-- Loading Animation -->
- <div id="loading-overlay">
+<!-- Loading Overlay for Payment Processing -->
+<div id="loading-overlay">
     <div class="loading-spinner">
         <i class="text-pink fa-3x fas fa-spinner fa-spin-pulse"></i>
     </div>
-    
+
 </div>
 {% endblock %}
 
-
-
 {% block postloadjs %}
-
-    {{ block.super }}
-    {{ stripe_public_key|json_script:"id_stripe_public_key" }}
-    {{ client_secret|json_script:"id_client_secret" }}
-    <script src="{% static 'checkout/js/stripe_elements.js' %}"></script>
+{{ block.super }}
+<!-- Load Stripe public key and client secret for Stripe Elements -->
+{{ stripe_public_key|json_script:"id_stripe_public_key" }}
+{{ client_secret|json_script:"id_client_secret" }}
+<!-- Load custom JavaScript for Stripe Elements handling -->
+<script src="{% static 'checkout/js/stripe_elements.js' %}"></script>
 
 {% endblock %}
