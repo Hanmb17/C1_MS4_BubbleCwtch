@@ -12,10 +12,11 @@
 {% endblock %}
 
 {% block content %}
-<div class="text-center container min-height py-5">
+<div class="container min-height py-5 text-center">
     <hr>
     <h2>Shopping Bag</h2>
     <hr>
+
     {% if bag_items %}
     <div class="row">
         <div class="col-md-8 col-lg-6 offset-lg-1">
@@ -42,22 +43,17 @@
                                         <div class="form-group">
                                             <div class="input-group input-group-{{ item.item_id }}">
                                                 <div class="input-group-prepend">
-                                                    <button
-                                                        class="decrement-qty bg-grey btn-sm text-white weight-bold btn rounded-0 decrement-qty_{{ item.item_id }}"
-                                                        data-item_id="{{ item.item_id }}"
-                                                        aria-label="Decrease Quantity">
+                                                    <button class="decrement-qty bg-grey btn-sm text-white weight-bold btn rounded-0 decrement-qty_{{ item.item_id }}"
+                                                        data-item_id="{{ item.item_id }}" aria-label="Decrease Quantity">
                                                         <i class="fas fa-minus fa-sm"></i>
                                                     </button>
                                                 </div>
-                                                <input
-                                                    class="form-control form-control-sm qty_input  weight-semibold id_qty_{{ item.item_id }}"
-                                                    type="number" name="quantity" value="{{ item.quantity }}" min="1"
-                                                    max="99" data-item_id="{{ item.item_id }}" aria-label="Quantity">
+                                                <input class="form-control form-control-sm qty_input weight-semibold id_qty_{{ item.item_id }}"
+                                                    type="number" name="quantity" value="{{ item.quantity }}" min="1" max="99"
+                                                    data-item_id="{{ item.item_id }}" aria-label="Quantity">
                                                 <div class="input-group-append">
-                                                    <button
-                                                        class="increment-qty bg-grey btn-sm text-white weight-bold btn rounded-0 increment-qty_{{ item.item_id }}"
-                                                        data-item_id="{{ item.item_id }}"
-                                                        aria-label="Increase Quantity">
+                                                    <button class="increment-qty bg-grey btn-sm text-white weight-bold btn rounded-0 increment-qty_{{ item.item_id }}"
+                                                        data-item_id="{{ item.item_id }}" aria-label="Increase Quantity">
                                                         <i class="fas fa-plus fa-sm"></i>
                                                     </button>
                                                 </div>
@@ -65,16 +61,13 @@
                                         </div>
                                         <!-- Error message placeholder -->
                                         <span class="error-message"></span>
-                                        <!-- Add a hidden input field to identify the item -->
+                                        <!-- Hidden input field to identify the item -->
                                         <input type="hidden" name="item_id" value="{{ item.item_id }}">
                                     </form>
-                                    <p class="card-text mb-2 text-grey">Quantity: <span
-                                            class="fw-bold">{{ item.quantity }}</span></p>
-                                    <p class="card-text text-grey">Total Price: <span
-                                            class="fw-bold">£{{ item.lineitem_total}}</span></p>
+                                    <p class="card-text mb-2 text-grey">Quantity: <span class="fw-bold">{{ item.quantity }}</span></p>
+                                    <p class="card-text text-grey">Total Price: <span class="fw-bold">£{{ item.lineitem_total }}</span></p>
                                 </div>
-                                <a class="remove-item error-message" data-id="remove_{{ item.item_id }}"
-                                    aria-label="Remove item from shoppingbag">
+                                <a class="remove-item error-message" data-id="remove_{{ item.item_id }}" aria-label="Remove item from shopping bag">
                                     <i class="fa-solid fa-lg fa-trash-can" aria-hidden="true"></i>
                                 </a>
                             </div>
@@ -91,8 +84,7 @@
                 </div>
                 <div class="card-body">
                     <ul class="list-group list-group-flush">
-                        <li
-                            class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0 text-grey">
+                        <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0 text-grey">
                             Products
                             <span>£{{ grand_total|floatformat:2 }}</span>
                         </li>
@@ -100,13 +92,11 @@
                             Shipping
                             <span>{% if delivery == 0 %}FREE{% else %}{{ delivery|floatformat:2 }}{% endif %}</span>
                         </li>
-                        <li
-                            class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3 text-grey">
+                        <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3 text-grey">
                             <div>
-                                <strong>Total amount</strong>
-                                <p class="mb-0">(including VAT)</p>
+                                <span><strong>Total amount (including VAT)</strong></span>
                             </div>
-                            <span><strong> £{{ grand_total|floatformat:2  }}</strong></span>
+                            <span><strong>£{{ grand_total|floatformat:2 }}</strong></span>
                         </li>
                     </ul>
                     <a href="{% url 'checkout' %}" class="btn w-100 btn-lg btn-cta rounded-pill text-grey mb-2">
@@ -121,16 +111,16 @@
                 </div>
             </div>
         </div>
-        {% else %}
-        <p>Your bag is empty.</p>
-        <a href="{% url 'products' %}" class="btn px-2 px-sm-4 btn-outline-cta rounded-pill">
-            <span class="icon">
-                <i class="fas fa-chevron-left"></i>
-            </span>
-            <span class="text-grey">Keep Shopping</span>
-        </a>
-        {% endif %}
     </div>
+    {% else %}
+    <p>Your bag is empty.</p>
+    <a href="{% url 'products' %}" class="btn px-2 px-sm-4 btn-outline-cta rounded-pill">
+        <span class="icon">
+            <i class="fas fa-chevron-left"></i>
+        </span>
+        <span class="text-grey">Keep Shopping</span>
+    </a>
+    {% endif %}
 </div>
 {% endblock %}
 
