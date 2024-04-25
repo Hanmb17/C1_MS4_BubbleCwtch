@@ -56,12 +56,13 @@ card.addEventListener('change', function (event) {
 });
 
 // Handle form submission
-
 var form = document.getElementById('payment-form');
 
 form.addEventListener('submit', function (ev) {
     ev.preventDefault();
-    card.update({'disabled': true});
+    card.update({
+        'disabled': true
+    });
 
     $('#submit-button').attr('disabled', true);
     $('#payment-form').fadeToggle(100);
@@ -86,7 +87,7 @@ form.addEventListener('submit', function (ev) {
 
         // Passes card details to Stripe
         stripe.confirmCardPayment(clientSecret, {
-            
+
             // Sends payment details with user details
             payment_method: {
                 card: card,
@@ -117,7 +118,7 @@ form.addEventListener('submit', function (ev) {
                 }
             },
         }).then(function (result) {
-        
+
             // if there is an error send error message below input
             if (result.error) {
                 var errorDiv = document.getElementById('card-errors');
@@ -135,7 +136,9 @@ form.addEventListener('submit', function (ev) {
                 $('#loading-overlay').fadeToggle(100);
 
                 // Re-enable the submit button and card input
-                card.update({'disabled': false});
+                card.update({
+                    'disabled': false
+                });
                 $('#submit-button').attr('disabled', false);
 
                 // if payment details are valid submit payment form

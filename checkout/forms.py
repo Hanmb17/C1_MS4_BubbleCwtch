@@ -48,8 +48,6 @@ class OrderForm(forms.ModelForm):
             self.fields[field].widget.attrs['class'] = (
                 'input-form mb-3 px-2 py-2 text-grey rounded-2')
 
-            # Removes labels from inputs
-           # self.fields[field].label = False
 
 class OrderStatusUpdateForm(forms.ModelForm):
     """
@@ -63,4 +61,5 @@ class OrderStatusUpdateForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['status'].widget.attrs.update({'class': 'input-form mb-3 mt-2 px-2 py-2 text-grey rounded-2'})
+        self.fields['status'].widget.attrs.update({
+            'class': 'input-form mb-3 mt-2 px-2 py-2 text-grey rounded-2'})

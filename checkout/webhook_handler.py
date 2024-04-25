@@ -11,6 +11,7 @@ import stripe
 import json
 import time
 
+
 class StripeWH_Handler:
     """ Handle Stripe webhooks """
 
@@ -35,21 +36,20 @@ class StripeWH_Handler:
             [cust_email]
         )
 
-
     def handle_event(self, event):
         """
         Handle a generic/unknown/unexpected webhook event
         """
-        
+
         return HttpResponse(
             content=f'Unhandled webhook received: {event["type"]}',
             status=200)
-
 
     def handle_payment_intent_succeeded(self, event):
         """
         Handle the payment_intent.succeeded webhook from Stripe
         """
+
         # Get payment intent
         intent = event.data.object
 
@@ -122,7 +122,6 @@ class StripeWH_Handler:
                     grand_total=grand_total,
                     original_bag=bag,
                     stripe_pid=pid,
-            
                 )
 
                 # Sets value to True if order is found
@@ -178,15 +177,17 @@ class StripeWH_Handler:
                     content=f'Webhook received: {event["type"]} | ERROR: {e}',
                     status=500)
         self._send_confirmation_email(order)
+
         return HttpResponse(
-            content=(f'Webhook received: {event["type"]} | SUCCESS: Created order in webhook'),
+            content=f'Webhook received: {event["type"]} | ' +
+            'SUCCESS: Created order in webhook',
             status=200)
 
     def handle_payment_intent_payment_failed(self, event):
         """
         Handle the payment_intent.payment_failed webhook from Stripe
         """
-        
+
         return HttpResponse(
             content=f'Webhook received: {event["type"]}',
             status=200)

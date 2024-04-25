@@ -3,7 +3,11 @@ from django.urls import reverse
 from products.models import Product
 from .models import Order
 
+
 class CheckoutViewTestCase(TestCase):
+    """
+    Order Views Tests
+    """
     def setUp(self):
         self.client = Client()
         self.checkout_url = reverse('checkout')
@@ -22,7 +26,7 @@ class CheckoutViewTestCase(TestCase):
     def test_get_checkout_page_with_empty_bag(self):
         """Test checkout page redirects to products with empty bag."""
         response = self.client.get(self.checkout_url)
-        self.assertRedirects(response, '/products/')  # Assuming '/products/' is the URL for the products page
+        self.assertRedirects(response, '/products/')
 
     def test_get_checkout_page_with_bag_items(self):
         """Test checkout page view with bag items."""

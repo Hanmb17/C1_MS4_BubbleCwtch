@@ -4,7 +4,6 @@ from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.conf import settings
 
-
 from .forms import OrderForm
 from .models import Order, OrderLineItem
 from products.models import Product
@@ -14,6 +13,7 @@ from bag.contexts import bag_contents
 
 import stripe
 import json
+
 
 @require_POST
 def cache_checkout_data(request):
@@ -42,6 +42,10 @@ def cache_checkout_data(request):
 
 
 def checkout(request):
+    """
+    Handles the checkout process, which includes handling Stripe payments
+    and creating a new order in the database.
+    """
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
 
@@ -72,7 +76,7 @@ def checkout(request):
                 print("Item Data:", item_data)
             try:
                 product = Product.objects.get(id=item_id)
-                quantity = item_data 
+                quantity = item_data
                 order_line_item = OrderLineItem(
                     order=order,
                     product=product,
@@ -137,7 +141,6 @@ def checkout(request):
                                    'Did you forget to set it in '
                                    'your environment?'))
 
-
     template = 'checkout/checkout.html'
     context = {
         'order_form': order_form,
@@ -176,7 +179,6 @@ def checkout_success(request, order_number):
             user_profile_form = UserProfileForm(profile_data, instance=profile)
             if user_profile_form.is_valid():
                 user_profile_form.save()
-
 
     messages.success(request, f'Order successfully processed! \
         Your order number is {order_number}. A confirmation \
