@@ -66,12 +66,11 @@
 
                 <!-- Image -->
                 <div class="mb-3">
-                    {{ form.image.label_tag }}
+                    <p class="d-inline">Product Image: <em>Images should be in a 1:1 aspect ratio</em></p>
                     {{ form.image }}
                 </div>
 
                 <!-- URL for image -->
-                {{ form.image_url.label_tag }}
                 {{ form.image_url }}
                 {% for error in form.image_url.errors  %}
                 <span class="error-message">{{error}}</span>
@@ -109,7 +108,7 @@
 
 {% block postloadjs %}
 {{ block.super }}
-<script type="text/javascript">
+<script>
     $('#new-image').change(function () {
         var file = $('#new-image')[0].files[0];
         $('#filename').text(`Image will be set to: ${file.name}`);
