@@ -8,6 +8,7 @@ from checkout.forms import OrderStatusUpdateForm
 
 from checkout.models import Order
 
+
 @login_required
 def profile(request):
     """ Display the user's profile. """
@@ -24,7 +25,7 @@ def profile(request):
                 request, 'Update failed. Please check the form.')
     else:
         form = UserProfileForm(instance=profile)
-    
+
     if request.user.is_superuser:
         # Superuser sees all orders sorted by date (most recent first)
         orders = Order.objects.order_by('-date')
@@ -45,8 +46,10 @@ def profile(request):
 
     return render(request, template, context)
 
+
 def order_history(request, order_number):
     """ Displays the order history using the checkout_success template """
+
     order = get_object_or_404(Order, order_number=order_number)
 
     if request.method == 'POST' and request.user.is_superuser:
