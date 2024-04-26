@@ -234,3 +234,161 @@ Add Diagram
 | **Line Item Total**| Decimal        | max_digits=10, decimal_places=2         | FALSE    | FALSE     | n/a         | n/a           | TRUE         | n/a              |
 
 </details>
+
+---
+
+### Surface
+
+#### Wireframes
+
+Add wireframes 
+
+#### Colour
+
+Add colour info
+
+### Typography
+
+The website uses two typefaces that I felt worked well together and matched the playfulness of the brand while complementing each other::
+
+- **Headings & Site Logo**: [Fredoka](https://fonts.google.com/specimen/Fredoka) - Fredoka's playful and bold characteristics make it great for the headlines and site logo.
+
+- **Main Body Text**: [Poppins](https://fonts.google.com/specimen/Poppins) - Poppins offers excellent readability, making it perfect for the main body content.
+
+These typefaces work together to create a cohesive and visually pleasing user experience,  helping to improve the overall design.
+
+- - -
+
+#### Images & Graphics
+
+##### Logo
+
+
+#### Design Changes
+
+##### Admin Forms Background colour
+
+##### Edit / Delete Product Buttons on Cards
+
+
+### Features
+
+Here's a breakdown of the features on the Bubble Cwtch Site
+
+#### Meta Tags
+- **Functionality**: All pages have title and description meta tags, enhancing SEO performance.
+- **Value To User**: This ensures easy discovery by online shoppers and provides clarity on the site's purpose and content.
+
+#### Layout
+- **Functionality**: Site utilises Bootstrap container to restrict site width for optimal display.
+- **Value To User**: Ensures consistent and visually appealing display across devices, enhancing user experience and eliciting a positive emotional response.
+
+#### General Responsiveness
+- **Functionality**: Full responsiveness across all pages, including font size adjustments, padding & margin tweaks, and layout modifications for varying screen sizes.
+- **Value To User**: Ensures seamless navigation and visual appeal on any device, contributing to a positive user experience.
+
+#### Favicon
+- **Functionality**: Incorporates a favicon featuring the brand's logo.
+- **Value To User**: Builds brand consistency, enhances professionalism and instils trustworthiness in the site.
+
+#### Nav Bar
+- **Functionality**: Responsive navigation bar with custom layouts and content for different screen sizes.
+- **Value To User**: Facilitates easy navigation regardless of device, offers search functionality and provides feedback on shopping bag contents.
+
+#### Delivery Banner
+- **Functionality**: Persistent banner across all pages indicating the free delivery threshold.
+- **Value to User**: Encourages higher spending, informs users about free delivery and boosts sales.
+
+#### Buttons and Links
+- **Functionality**: Consistently styled buttons and links with specific colours for different actions.
+- **Value To User**: Provides intuitive UI and reduces mistakes during interactions.
+
+#### Messages
+- **Functionality**: Utilises the Django messaging framework and Bootstrap's Toast element for user feedback throughout the site.
+- **Value To User**: Offers reassurance, enhances user experience and promotes a sense of security.
+
+
+Add page info here and revert back to user stories 
+
+
+#### Feature Information
+
+Talk about reviews - adding ingredients - recipes for admin and inventory 
+Back to top button
+
+
+- - -
+
+## Technologies Used
+
+### Languages
+
+- [HTML:](https://en.wikipedia.org/wiki/HTML5) Used for the site's structure and content.
+- [CSS:](https://en.wikipedia.org/wiki/Cascading_Style_Sheets) Used to style the website (along side Bootstrap)
+- [JavaScript:](https://en.wikipedia.org/wiki/JavaScript) Used for interactive features such as:
+  - Bag / Product Quantity Input
+  - Stripe Payment Handling
+  - Product form image field text
+  - Product sorting page reload
+  - Remove & Update products from bag
+- [Python: ](<https://en.wikipedia.org/wiki/Python_(programming_language)>) Used to build the core of the backend of the project within the Django framework
+
+
+### Web Development Frameworks
+
+- [Django:](https://www.djangoproject.com/) High Level Python-based Web Framework.
+- [Bootstrap:](https://getbootstrap.com/) Ensures consistent styling, layout, and responsiveness throughout the site.
+- [Font Awesome:](https://fontawesome.com/) Adds icons for improved user experience and visual appeal.
+- [JQuery:](https://jquery.com/) Simplifies JavaScript coding for quicker development.
+
+
+### Database and Database Hosting
+
+- [SQLITE:](https://docs.djangoproject.com/en/4.1/ref/databases/#sqlite-notes) Built-in Django database for development.
+- [Elephant SQL:](https://www.elephantsql.com/) PPostgres-based database host for live production app.
+
+
+### Additional Backend Tools
+
+- [AllAuth:](https://django-allauth.readthedocs.io/en/latest/) Integrated Django authentication and sign-in.
+- [Django Countries:](https://pypi.org/project/django-countries/) Provides country choices for forms.
+- [Django Widget Tweaks:](https://pypi.org/project/django-widget-tweaks/) Customizses form field styling.
+- [Django Storages:](https://django-storages.readthedocs.io/en/latest/) Offers custom storage backends for Django.
+- [Freezegun:](https://pypi.org/project/freezegun/) Aids automated testing with datetime control.
+- [Gunicorn:](https://gunicorn.org/) Python WSGI HTTP Server for UNIX.
+- [Pillow:](https://pypi.org/project/Pillow/) Extends image handling capabilities.
+- [Psycopg2:](https://www.psycopg.org/) Facilitates smooth communication between backend and database.
+- [s3transfer:](https://pypi.org/project/s3transfer/) Manages Amazon AWS S3 Transfers.
+- [Boto3](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html) & [Botocore:](https://github.com/boto/botocore) Configures AWS services using Python.
+- [Stripe:](https://stripe.com/gb) Manages secure online payments.
+- [dj-database-url:](https://pypi.org/project/dj-database-url/) Enables DATABASE_URL env variable usage in settings.py.
+- [Coverage:](https://coverage.readthedocs.io/en/7.3.1/) Measures code coverage of Python programs.
+- [oauthlib](https://pypi.org/project/oauthlib/) & [requests-oauthlib:](https://pypi.org/project/requests-oauthlib/) Handles authentication via OAuth.
+- [python3-openid:](https://pypi.org/project/python3-openid/) Supports the use of the OpenID decentralized identity system.
+- [sqlparse:](https://pypi.org/project/sqlparse/) Parses SQL for Python.
+- [urllib3:](https://pypi.org/project/urllib3/) HTTP client for Python.
+
+
+### Development, Deployment and testing 
+
+- [Git:](https://git-scm.com/) Version control for collaborative development.
+- [GitHub:](https://github.com/) Hosts the project code.
+- [Gitpod:](https://www.gitpod.io/) Provides a development environment for coding and testing.
+- [Heroku:](https://dashboard.heroku.com/apps) Deploys the live site.
+- [Amazon Web Services:](https://aws.amazon.com/) Hosts static files and images for the live production site.
+- [Google Chrome Dev Tools:](https://www.google.com/intl/en_uk/chrome/) Inspects page elements, debugs issues, and tests responsiveness.
+- [Temp Mail:](https://temp-mail.org/en/) Generates temporary emails for testing account verification and order confirmation.
+
+
+### Creative Resources
+
+- [Google Fonts:](https://fonts.google.com/) Used to select & import the fonts
+- [Lucidchart](https://www.lucidchart.com/pages/) To create the flow diagram of the website
+- [DrawSQL](https://drawsql.app/) Used to visually design the database schema
+- [ChatGPT:](https://chat.openai.com/auth/login) Used to generate copy to populate site (not used for any code)
+- [Affinity Photo:]() Used to create 
+- [Affinity Designer:]() Used to create the site logo
+- [Tiny PNG:](https://tinypng.com/) Optimises images for reduced file size
+- [ezGIF:](https://ezgif.com/) Creates GIFs for the README.
+- [Favicon.io:](https://favicon.io/favicon-converter/) Generates and adds the favicon.
+
