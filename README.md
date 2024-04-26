@@ -59,3 +59,43 @@ Websites visited for research:
 - [Pretty Suds](https://prettysuds.co.uk/)
 - [Myddfai](https://myddfai.com/)
 - [Adra](https://adrahome.com/)
+
+####  User Stories
+
+Below are the user stories I created after doing my research. These helped to guide the development and design.
+
+1. As a general user:
+  - 1.1: I want to understand the purpose of Bubble Cwtch immediately upon entering the website.
+  - 1.2: I want to easily find products with intuitive navigation.
+  - 1.3: I want Bubble Cwtch to be fully responsive for seamless browsing.
+  - 1.4: I want to find Bubble Cwtch on social media for brand insights.
+  - 1.5: I want effortless navigation back to the main site without relying on browser buttons if I encounter a non-existent page.
+  - 1.6: I want to get feedback when interacting with Bubble Cwtch to confirm the success of my actions.
+
+2. As a shopper:
+  - 2.1: I want to browse Bubble Cwtch's products easily, with options to filter and search for specific items.
+  - 2.2: I want to access more information about each product. 
+  - 2.3: I want to be able to add a product to my bag quickly and with minimum clicks.
+  - 2.4: I want to be able to shop for multiple items across Bubble Cwtch's product range.
+  - 2.5: I want to be able to add multiples of a single product to my shopping bag at once.
+  - 2.6: I want to be able to edit my shopping bag contents easily, adding or removing items as needed.
+  - 2.7: I want to know the delivery charge for my order before proceeding to Checkout.
+  - 2.8: I want my payment and order to be fully secure and trustworthy.
+  - 2.9: I want the option to create an account on Bubble Cwtch to save my order history and track order status.
+
+3. As a user with an account:
+  - 3.1: I want my account on Bubble Cwtch to be secure and straightforward to set up.
+  - 3.2: I want to see my order history easily, reviewing past purchases and tracking current orders.
+  - 3.3: I want the ability to update and save my personal information within my account settings.
+  - 3.4: I want to view the status of my order, allowing me to track its progress.
+
+4. As an admin of the site:
+  - 4.1: I want to be able to add and edit products easily.
+  - 4.2: I want to the ability to remove products from sale, managing product availability.
+  - 4.3: I want to be able to edit featured products.
+  - 4.4: I want to be able to view all orders and filter by status.
+  - 4.5: I want to be able to update the status of a customer's order easily. 
+  - 4.6: I want to be easily navigate to the Django admin.
+  - 4.7: I want the admin controls to blend with the site design but stand out.
+
+- - -
