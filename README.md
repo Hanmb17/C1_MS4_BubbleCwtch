@@ -102,6 +102,7 @@ Below are the user stories I created after doing my research. These helped to gu
 
 ### Scope
 
+Using the user stories, I created a list of features I would like to add to the site to meet my user stories.
 
 | Feature                                                  | Difficulty | Importance |
 |----------------------------------------------------------|------------|------------|
@@ -137,7 +138,99 @@ Below are the user stories I created after doing my research. These helped to gu
 | **Admin Section:**                                      |            |            |
 | Links in main navigation                               | 2          | 4          |
 | Profile - Filter/view all orders                       | 3          | 4          |
-| Profile - Click to view and edit order status          | 4          | 4          |
+| Profile - Click through to view and edit order status          | 4          | 4          |
 | Admin sections have a different look                   | 3          | 3          |
 
 ---
+
+### Structure
+
+- - -
+
+### Skeleton
+Add Diagram
+
+#### Database Schema
+
+Add Diagram
+
+#### Models
+
+
+<details><summary>UserProfile Model</summary>
+
+| **Field**                | **Field Type** | **Validation**                          | **null** | **blank** | **default** | **on_delete** | **editable** | **related_name** |
+|--------------------------|----------------|-----------------------------------------|----------|-----------|-------------|---------------|--------------|------------------|
+| **User**                 | OneToOneField  | 'User', on_delete=models.CASCADE       | FALSE    | FALSE     | n/a         | CASCADE       | TRUE         | n/a              |
+| **Default Phone Number** | Char           | max_length=20                           | TRUE     | TRUE      | n/a         | n/a           | TRUE         | n/a              |
+| **Default Country**      | Char           | max_length=2                            | TRUE     | TRUE      | n/a         | n/a           | TRUE         | n/a              |
+| **Default Postcode**     | Char           | max_length=20                           | TRUE     | TRUE      | n/a         | n/a           | TRUE         | n/a              |
+| **Default Town or City** | Char           | max_length=40                           | TRUE     | TRUE      | n/a         | n/a           | TRUE         | n/a              |
+| **Default Street Address1** | Char       | max_length=80                           | TRUE     | TRUE      | n/a         | n/a           | TRUE         | n/a              |
+| **Default Street Address2** | Char       | max_length=80                           | TRUE     | TRUE      | n/a         | n/a           | TRUE         | n/a              |
+| **Default County**       | Char           | max_length=80                           | TRUE     | TRUE      | n/a         | n/a           | TRUE         | n/a              |
+
+</details>
+
+<details><summary>Category Model</summary>
+
+| **Field**         | **Field Type** | **Validation** | **null** | **blank** | **default** | **on_delete** | **editable** | **related_name** |
+|-------------------|----------------|----------------|----------|-----------|-------------|---------------|--------------|------------------|
+| **Name**          | Char           | max_length=254 | FALSE    | n/a       | n/a         | n/a           | TRUE         | n/a              |
+| **Friendly Name** | Char           | max_length=254 | TRUE     | TRUE      | n/a         | n/a           | TRUE         | n/a              |
+
+</details>
+
+<details><summary>Product Model</summary>
+
+| **Field**         | **Field Type** | **Validation**                           | **null** | **blank** | **default** | **on_delete** | **editable** | **related_name** |
+|-------------------|----------------|------------------------------------------|----------|-----------|-------------|---------------|--------------|------------------|
+| **Category**      | ForeignKey     | 'Category', null=True, on_delete=SET_NULL| TRUE     | TRUE      | n/a         | SET_NULL      | TRUE         | n/a              |
+| **Name**          | Char           | max_length=254                           | FALSE    | FALSE     | n/a         | n/a           | TRUE         | n/a              |
+| **Description**   | Text           |                                          | FALSE    | FALSE     | n/a         | n/a           | TRUE         | n/a              |
+| **Price**         | Decimal        | max_digits=6, decimal_places=2           | FALSE    | FALSE     | n/a         | n/a           | TRUE         | n/a              |
+| **Rating**        | Integer        | validators=[MaxValueValidator(5), MinValueValidator(0)] | TRUE | TRUE      | 0           |               | TRUE         | n/a              |
+| **Is Featured**   | Boolean        | default=False                            | FALSE    | TRUE      | FALSE       |               | TRUE         | n/a              |
+| **Discontinued**  | Boolean        | default=False                            | FALSE    | TRUE      | FALSE       |               | TRUE         | n/a              |
+| **Image URL**     | URLField       | max_length=1024, null=True               | TRUE     | TRUE      | n/a         |               | TRUE         | n/a              |
+| **Image**         | ImageField     | null=True, blank=True                    | TRUE     | TRUE      | n/a         |               | TRUE         | n/a              |
+
+
+</details>
+
+<details><summary>Order Model</summary>
+
+| **Field**          | **Field Type** | **Validation**                             | **null** | **blank** | **default** | **on_delete** | **editable** | **related_name** |
+|--------------------|----------------|--------------------------------------------|----------|-----------|-------------|---------------|--------------|------------------|
+| **Order Number**   | Char           | max_length=32                              | FALSE    | FALSE     | n/a         | n/a           | TRUE         | n/a              |
+| **Full Name**      | Char           | max_length=50                              | FALSE    | FALSE     | n/a         | n/a           | TRUE         | n/a              |
+| **Email**          | Char           | max_length=254                             | FALSE    | FALSE     | n/a         | n/a           | TRUE         | n/a              |
+| **Phone Number**   | Char           | max_length=20                              | FALSE    | FALSE     | n/a         | n/a           | TRUE         | n/a              |
+| **Street Address1**| Char           | max_length=80                              | FALSE    | FALSE     | n/a         | n/a           | TRUE         | n/a              |
+| **Street Address2**| Char           | max_length=80, null=True, blank=True       | TRUE     | TRUE      | n/a         | n/a           | TRUE         | n/a              |
+| **Town or City**   | Char           | max_length=40                              | FALSE    | FALSE     | n/a         | n/a           | TRUE         | n/a              |
+| **County**         | Char           | max_length=80, null=True, blank=True       | TRUE     | TRUE      | n/a         | n/a           | TRUE         | n/a              |
+| **Postcode**       | Char           | max_length=20, null=True, blank=True       | TRUE     | TRUE      | n/a         | n/a           | TRUE         | n/a              |
+| **Country**        | Char           | max_length=2                               | FALSE    | FALSE     | n/a         | n/a           | TRUE         | n/a              |
+| **Date**           | DateTime       |                                            | FALSE    | FALSE     | n/a         | n/a           | TRUE         | n/a              |
+| **Order Total**    | Decimal        | max_digits=10, decimal_places=2            | FALSE    | FALSE     | n/a         | n/a           | TRUE         | n/a              |
+| **Delivery Cost**  | Decimal        | max_digits=10, decimal_places=2            | FALSE    | FALSE     | n/a         | n/a           | TRUE         | n/a              |
+| **Grand Total**    | Decimal        | max_digits=10, decimal_places=2            | FALSE    | FALSE     | n/a         | n/a           | TRUE         | n/a              |
+| **Original Bag**   | Text           |                                            | TRUE     | TRUE      | n/a         | n/a           | TRUE         | n/a              |
+| **Stripe PID**     | Char           | max_length=254                             | FALSE    | FALSE     | n/a         | n/a           | TRUE         | n/a              |
+| **User Profile**   | ForeignKey     | 'UserProfile', null=True, on_delete=SET_NULL| TRUE    | TRUE      | n/a         | SET_NULL      | TRUE         | n/a              |
+| **Status**         | Char           | max_length=20                              | FALSE    | FALSE     | n/a         | n/a           | TRUE         | n/a              |
+
+
+</details>
+
+<details><summary>Orderline Model</summary>
+
+| **Field**          | **Field Type** | **Validation**                          | **null** | **blank** | **default** | **on_delete** | **editable** | **related_name** |
+|--------------------|----------------|-----------------------------------------|----------|-----------|-------------|---------------|--------------|------------------|
+| **Order**          | ForeignKey     | 'Order', on_delete=models.CASCADE      | FALSE    | FALSE     | n/a         | CASCADE       | TRUE         | n/a              |
+| **Product**        | ForeignKey     | 'Product', on_delete=models.PROTECT     | FALSE    | FALSE     | n/a         | PROTECT       | TRUE         | n/a              |
+| **Quantity**       | Integer        |                                         | FALSE    | FALSE     | n/a         | n/a           | TRUE         | n/a              |
+| **Line Item Total**| Decimal        | max_digits=10, decimal_places=2         | FALSE    | FALSE     | n/a         | n/a           | TRUE         | n/a              |
+
+</details>
