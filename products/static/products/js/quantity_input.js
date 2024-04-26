@@ -1,7 +1,6 @@
 // Handles quantity input for products
 // Adapted from Code Institute's Boutique Ado Walkthrough
-$(document).ready(function() { console.log('Document Ready'); 
-console.log('loaded');
+$(document).ready(function() {
 
 // Disable +/- buttons outside 1-99 range
 function handleEnableDisable(itemId) {
@@ -25,7 +24,7 @@ $('.qty_input').change(function() {
     handleEnableDisable(itemId);
 });
 
-
+// Increment quantity
 $('.increment-qty').click(function(e) {
     e.preventDefault();
     var itemId = $(this).data('item_id');
@@ -47,4 +46,4 @@ $('.decrement-qty').click(function(e) {
     handleEnableDisable(itemId);
 });
 
-})
+});
