@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block extra_title %}- Home{% endblock %}
+{% block extra_title %}- {{ product.name }}{% endblock %}
 
 {% block page_header %}
 <div class="container header-container">
@@ -13,9 +13,34 @@
 
 {% block content %}
 <div class="min-height px-lg-5 px-md-4 my-2">
-  <div class="container-fluid align-items-center d-flex justify-content-center justify-content-md-start">
+  <div class="container">
+    <!-- Product edit and delete links for Super user view only -->
+    {% if request.user.is_superuser %}
+    <div class="bg-light-pink my-2">
+      <div class="row px-4 py-2 align-items-center">
+        <div class="col-12 col-sm-6">
+          <p class="m-0 fw-bold">
+            Product Management:
+          </p>
+        </div>
+        <div class="col-6 col-sm-3 text-start mt-2 mt-sm-0">
+          <small class="ml-3">
+            <a class="btn bg-white btn-outline-cta text-link" href="{% url 'edit_product' product.id %}"
+              aria-label="Edit product listing">Edit</a>
+          </small>
+        </div>
+        <div class="col-6 col-sm-3 text-end mt-2 mt-sm-0">
+          <small class="ml-3">
+            <a class="btn bg-white btn-outline-cta error-message" href="{% url 'delete_product' product.id %}"
+              aria-label="Delete product listing">Delete</a>
+          </small>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+    <!-- Product Information -->
     <div class="row g-0">
-      <div class="col-12  col-md-6 col-lg-4 offset-lg-2 my-auto">
+      <div class="col-12 col-md-6 col-lg-4 offset-lg-2 my-auto px-2">
         <div class="image-container text-center">
           {% if product.image %}
           <a class="" href="{{ product.image.url }}" target="_blank">
@@ -27,32 +52,28 @@
           {% endif %}
         </div>
       </div>
-      <div class="col-12 col-md-6 col-lg-5">
+      <div class="col-12 col-md-6 col-lg-5 px-2">
 
         <!-- Product Name -->
-        <h1 class="text-grey">{{ product.name }}</h1>
+        <h1 class="text-grey">
+          {{ product.name }}</h1>
 
         <!-- Product Category -->
         <div class="product-page-category mt-1">
-          <a href="{% url 'products' %}" class="text-grey">
-            <p class="font-title weight-semibold section-title text-uppercase">{{ product.category.friendly_name }}</p>
+          <a href="{% url 'products' %}?category={{ product.category.name }}" class="text-grey">
+            <p class="font-title  section-title text-uppercase">
+              {{ product.category.friendly_name }}
+            </p>
           </a>
         </div>
 
         <!-- Product Price -->
-        <p class="text-grey">£{{ product.price }}</p>
+        <p class="fw-bold">
+          £{{ product.price }}</p>
 
         <!-- Product Description -->
-        <p class="mt-3">{{ product.description }}</p>
-
-        <!-- Product edit and delete links -->
-
-        {% if request.user.is_superuser %}
-        <small class="ml-3 d-flex justify-content-between">
-          <a href="{% url 'edit_product' product.id %}">Edit</a>
-          <a class="text-danger" href="{% url 'delete_product' product.id %}">Delete</a>
-        </small>
-        {% endif %}
+        <p class="mt-3">
+          {{ product.description }}</p>
 
         <!-- Add item to bag form -->
         <form class="form" action="{% url 'add_to_bag' product.id %}" method="POST">
@@ -60,22 +81,23 @@
 
           <!-- Quantity Input -->
           <div class="product-page-quantity my-4">
-            <p class="mt-3 mb-1 weight-semibold">Quantity</p>
+            <p class="mt-3 mb-1 ">
+              Quantity</p>
             <div class="form-group w-50">
               <div class="input-group input-group-{{ product.id }}">
                 <div class="input-group-prepend">
                   <button
-                    class="decrement-qty bg-grey text-white weight-bold btn rounded-0 decrement-qty_{{ product.id }}"
+                    class="decrement-qty bg-grey text-white font-weight-bold btn rounded-0 decrement-qty_{{ product.id }}"
                     data-item_id="{{ product.id }}" aria-label="Decrease Quantity">
                     <i class="fas fa-minus"></i>
                   </button>
                 </div>
-                <input class="form-control qty_input  weight-semibold id_qty_{{ product.id }}" type="number"
-                  name="quantity" value="1" min="1" max="99" data-item_id="{{ product.id }}" aria-label="Quantity">
+                <input class="form-control qty_input  id_qty_{{ product.id }}" type="number" name="quantity" value="1"
+                  min="1" max="99" data-item_id="{{ product.id }}" aria-label="Quantity">
                 <div class="input-group-append">
                   <button
                     class="increment-qty bg-grey text-white weight-bold btn rounded-0 increment-qty_{{ product.id }}"
-                    data-item_id="{{ product.id }}" aria-label="iNcrease Quantity">
+                    data-item_id="{{ product.id }}" aria-label="Increase Quantity">
                     <i class="fas fa-plus"></i>
                   </button>
                 </div>
@@ -84,23 +106,20 @@
           </div>
 
           <!-- Buttons -->
-          <div class="my-4 pt-2 pt-md-4 row">
-
-            <div class="col-12 col-md-8 col-lg-6 mb-2">
-
+          <div class="row my-4 pt-2 pt-md-4 align-items-center">
+            <div class="col-12 col-md-6 mb-2 mb-md-0">
               <!-- Add to Bag (Submit) Button -->
               <input type="submit" class="btn btn-lg btn-cta rounded-pill text-grey" value="Add to bag">
             </div>
-            <div class="col-12">
-
+            <div class="col-12 col-md-6 text-md-end mt-2 mt-md-0">
               <!-- Keep Shopping Button -->
               <a href="{% url 'products' %}" class="btn">
                 <i class="fas fa-chevron-left d-inline me-1"></i>
-                <p class="d-inline">Keep Shopping</p>
+                <p class="d-inline">Keep
+                  Shopping</p>
               </a>
             </div>
           </div>
-
           <!-- Hidden input to redirect user back to current page once added to bag -->
           <input type="hidden" name="redirect_url" value="{{ request.path }}">
         </form>
@@ -108,10 +127,10 @@
     </div>
   </div>
 </div>
-
 {% endblock %}
 
 {% block extra_js %}
 <!-- Quantity Input JS -->
-<script src="{% static 'products/js/quantity_input.js' %}"></script>
+<script src="{% static 'products/js/quantity_input.js' %}">
+</script>
 {% endblock %}

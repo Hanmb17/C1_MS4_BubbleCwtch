@@ -94,7 +94,7 @@ h6,
 }
 
 .error-message {
-  color: #C70000;
+  color: #C70000 !important;
   font-size: 14px;
 }
 
@@ -173,7 +173,6 @@ h6,
 }
 
 .btn-outline-cta {
-  color: var(--grey);
   border: 2px solid var(--dark-orange);
   transition: border-color 0.3s ease; 
 }
@@ -269,7 +268,9 @@ h6,
   display: none;
 }
 
-#id_remember, #id-save-info {
+#id_remember, 
+#id-save-info,
+.form-check-input {
   width: 1.2em;
   height: 1.2em;
   background-color: var(--white); 
@@ -279,13 +280,16 @@ h6,
 #id_remember:focus,
 #id_remember:hover,
 #id-save-info:focus,
-#id-save-info:hover {
+#id-save-info:hover,
+.form-check-input:focus,
+.form-check-input:hover {
   border-color: var(--pink);
   box-shadow: none;
 }
 
 #id_remember:checked,
-#id-save-info:checked {
+#id-save-info:checked,
+.form-check-input:checked {
   background-color: var(--dark-orange);
   border: none;
 }
@@ -555,7 +559,6 @@ h6,
 
 #sort-selector {
   width: fit-content;
-  height: 100%;
   padding: 5px 10px;
   background: var(--white);
   appearance: none;
