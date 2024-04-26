@@ -28,6 +28,11 @@ def profile(request):
     if request.user.is_superuser:
         # Superuser sees all orders sorted by date (most recent first)
         orders = Order.objects.order_by('-date')
+
+        # Filter orders by status if status is provided in the request
+        status = request.GET.get('status')
+        if status:
+            orders = orders.filter(status=status)
     else:
         orders = profile.orders.all()
 

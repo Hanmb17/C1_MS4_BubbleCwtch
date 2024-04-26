@@ -238,13 +238,15 @@ h6,
 
 
 /* Form Inputs */
- .input-form {
+ .input-form, 
+ .form-select {
   border: 2px solid var(--orange);
   width: 100%;
  }
 
  .input-form:focus-visible,
- .allauth-form-inner-content input:focus-visible {
+ .allauth-form-inner-content input:focus-visible,
+ .form-select:focus-visible {
   border: none;
   outline-color: var(--pink);
  }
@@ -282,7 +284,8 @@ h6,
 #id-save-info:focus,
 #id-save-info:hover,
 .form-check-input:focus,
-.form-check-input:hover {
+.form-check-input:hover,
+.form-select:focus {
   border-color: var(--pink);
   box-shadow: none;
 }

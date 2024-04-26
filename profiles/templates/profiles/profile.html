@@ -84,6 +84,18 @@
             <div class="col-12 col-lg-6 bg-light-pink">
                 {% if user.is_superuser %}
                 <h4 class="mt-3">All Orders</h4>
+                <!-- Filter by status dropdown menu -->
+            <form method="GET" action="{% url 'profile' %}" class="mb-3">
+                <select name="status" class="form-select mb-3" aria-label="Filter by status">
+                    <option value="" {% if not request.GET.status %}selected{% endif %}>All Statuses</option>
+                    <option value="new" {% if request.GET.status == 'pending' %}selected{% endif %}>New</option>
+                    <option value="processing" {% if request.GET.status == 'processing' %}selected{% endif %}>Processing</option>
+                    <option value="shipped" {% if request.GET.status == 'shipped' %}selected{% endif %}>Shipped</option>
+                    <option value="delivered" {% if request.GET.status == 'shipped' %}selected{% endif %}>Delivered</option>
+                    <option value="cancelled" {% if request.GET.status == 'shipped' %}selected{% endif %}>Cancelled</option>
+                </select>
+                <button type="submit" class="btn btn-cta">Filter</button>
+            </form>
                 {% else %}
                     <h4 class="mt-3">Order History</h4>
                 {% endif %}
@@ -124,9 +136,12 @@
                             <!-- No Orders Text -->
                             <tr class="col-12 text-center">
                                 <td colspan="5">
+                                    {% if user.is_superuser %}
+                                    <p class="mt-3">No {{ request.GET.status|title }} orders found.</p>
+                                    {% else %}
                                     <p class=" mt-3">You haven't placed any orders yet... <br> <a href="{% url 'products' %}" class="weight-semibold text-blue text-decoration-none text-link-blue">Go Shopping!</a></p>
+                                    {% endif %}
                                 </td>
-                                
                             </tr>
                         {% endif %}
                         </tbody>
