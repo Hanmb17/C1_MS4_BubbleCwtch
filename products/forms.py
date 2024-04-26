@@ -3,7 +3,6 @@ from .widgets import CustomClearableFileInput
 from .models import Product, Category
 
 
-
 class ProductForm(forms.ModelForm):
     """
     Add/Edit Product Form
@@ -25,7 +24,7 @@ class ProductForm(forms.ModelForm):
 
     # Set image field attributes
     image = forms.ImageField(
-        label='Product Image', required=False, widget=CustomClearableFileInput )
+        label='Product Image', required=False, widget=CustomClearableFileInput)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

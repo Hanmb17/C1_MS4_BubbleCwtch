@@ -3,6 +3,7 @@ from django.core.validators import (
     MaxValueValidator, MinValueValidator
 )
 
+
 class Category(models.Model):
     """
     Category Model
@@ -16,8 +17,8 @@ class Category(models.Model):
         )
 
     friendly_name = models.CharField(
-        max_length=254, 
-        null=True, 
+        max_length=254,
+        null=True,
         blank=True
         )
 
@@ -30,15 +31,14 @@ class Category(models.Model):
         return self.friendly_name
 
 
-
 class Product(models.Model):
     """
     Product Model
     """
     category = models.ForeignKey(
-        'Category', 
-        null=True, 
-        blank=True, 
+        'Category',
+        null=True,
+        blank=True,
         on_delete=models.SET_NULL
         )
 
@@ -49,7 +49,7 @@ class Product(models.Model):
     description = models.TextField()
 
     price = models.DecimalField(
-        max_digits=6, 
+        max_digits=6,
         decimal_places=2
         )
 
@@ -64,27 +64,25 @@ class Product(models.Model):
     )
 
     is_featured = models.BooleanField(
-        default=False, 
+        default=False,
         blank=True
         )
 
     discontinued = models.BooleanField(
-        default=False, 
+        default=False,
         blank=True
         )
 
     image_url = models.URLField(
-        max_length=1024, 
-        null=True, 
+        max_length=1024,
+        null=True,
         blank=True
         )
 
     image = models.ImageField(
-        null=True, 
+        null=True,
         blank=True
         )
 
     def __str__(self):
         return self.name
-
-

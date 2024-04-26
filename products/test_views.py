@@ -4,23 +4,24 @@ from django.contrib.messages import get_messages
 
 from .models import Category, Product
 
+
 class TestProductsViews(TestCase):
     """ Test home url views """
 
     def setUp(self):
         """ Create sample categories  """
         self.bath_bombs_category = Category.objects.create(
-            name='bath_bombs', 
+            name='bath_bombs',
             friendly_name='Bath Bombs'
         )
 
         self.soaps_category = Category.objects.create(
-            name='soaps', 
+            name='soaps',
             friendly_name='Soaps'
         )
 
         self.shower_jellies_category = Category.objects.create(
-            name='shower_jellies', 
+            name='shower_jellies',
             friendly_name='Shower Jellies'
         )
 
@@ -62,33 +63,42 @@ class TestProductsViews(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'products/products.html')
 
-
     def test_product_detail_view_with_invalid_id(self):
         """ Test the product detail view with an invalid product id  """
-        response = self.client.get(reverse('product_detail', args=['999']))  
+        response = self.client.get(reverse('product_detail', args=['999']))
         self.assertEqual(response.status_code, 404)
 
-
     def test_product_detail_view_with_valid_id(self):
-        """Test the product detail view with a valid product id."""
-        response = self.client.get(reverse('product_detail', args=[self.test_product.id]))
+        """ Test the product detail view with a valid product id."""
+        response = self.client.get(
+            reverse('product_detail', args=[self.test_product.id]))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'products/product_detail.html')
 
     def test_product_detail_view_without_image(self):
-        """ Test that the product detail view handles a product without an image."""
-        response = self.client.get(reverse('product_detail', args=[self.product_without_image.id]))
+        """
+        Test that the product detail view
+        handles a product without an image.
+        """
+        response = self.client.get(
+            reverse('product_detail', args=[self.product_without_image.id]))
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, 'cwtch_in_the_valley.png') 
+        self.assertContains(response, 'cwtch_in_the_valley.png')
 
     def test_product_card_classes(self):
-        """Test that product cards have correct CSS classes based on category."""
+        """
+        Test that product cards have correct
+        CSS classes based on category.
+        """
         response = self.client.get(reverse('products'))
 
         # Check if the product card classes are correct for each product
-        self.assertContains(response, 'bg-purple', count=1)  # Check for bath bomb product class
-        self.assertContains(response, 'bg-blue', count=1)  # Check for soap product class
-        self.assertContains(response, 'bg-green', count=1)  # Check for shower jelly product class
+        # Check for bath bomb product class
+        self.assertContains(response, 'bg-purple', count=1)
+        # Check for soap product class
+        self.assertContains(response, 'bg-blue', count=1)
+        # Check for shower jelly product class
+        self.assertContains(response, 'bg-green', count=1)
 
     def test_search_query(self):
         """ Test search functionality """
@@ -111,4 +121,4 @@ class TestProductsViews(TestCase):
 
         messages = [m.message for m in get_messages(response.wsgi_request)]
         self.assertIn("You didn't search for anything!", messages)
-        self.assertEqual(response.status_code, 302) 
+        self.assertEqual(response.status_code, 302)

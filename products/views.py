@@ -28,16 +28,13 @@ def all_products(request):
                 products = products.annotate(lower_name=Lower('name'))
 
             if 'direction' in request.GET:
-                direction =request.GET['direction']
+                direction = request.GET['direction']
                 if direction == 'desc':
                     sortkey = f'-{sortkey}'
 
-
             products = products.order_by(sortkey)
 
-    
-
-        if'category' in request.GET:
+        if 'category' in request.GET:
             category = request.GET['category']
             products = products.filter(category__name=category)
             category = Category.objects.get(name=category)
@@ -50,7 +47,8 @@ def all_products(request):
                 messages.error(request, "You didn't search for anything!")
                 return redirect(reverse('products'))
 
-            queries = Q(name__icontains=query) | Q(description__icontains=query)
+            queries = Q(name__icontains=query) | Q(
+                description__icontains=query)
             products = products.filter(queries)
 
     current_sorting = f'{sort}_{direction}'
@@ -65,6 +63,7 @@ def all_products(request):
 
     return render(request, 'products/products.html', context)
 
+
 def product_detail(request, product_id):
     """ A view to show individual product details """
 
@@ -76,9 +75,11 @@ def product_detail(request, product_id):
 
     return render(request, 'products/product_detail.html', context)
 
+
 @login_required
 def add_product(request):
     """ Add a new product to the store """
+
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only store owners can add products.')
         return redirect(reverse('home'))
@@ -90,7 +91,8 @@ def add_product(request):
             messages.success(request, 'Product added successfully.')
             return redirect(reverse('product_detail', args=[product.id]))
         else:
-            messages.error(request, 'Failed to add product. Please check the form.')
+            messages.error(
+                request, 'Failed to add product. Please check the form.')
     else:
         form = ProductForm()
 
@@ -98,9 +100,11 @@ def add_product(request):
     context = {'form': form}
     return render(request, template, context)
 
+
 @login_required
 def edit_product(request, product_id):
     """ Edit a product """
+
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only store owners can edit products.')
         return redirect(reverse('home'))
@@ -131,11 +135,14 @@ def edit_product(request, product_id):
 
     return render(request, template, context)
 
+
 @login_required
 def delete_product(request, product_id):
     """ Delete a product from the store """
+
     if not request.user.is_superuser:
-        messages.error(request, 'Sorry, only store owners can delete products.')
+        messages.error(
+             request, 'Sorry, only store owners can delete products.')
         return redirect(reverse('home'))
 
     product = get_object_or_404(Product, pk=product_id)
