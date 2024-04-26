@@ -99,3 +99,45 @@ Below are the user stories I created after doing my research. These helped to gu
   - 4.7: I want the admin controls to blend with the site design but stand out.
 
 - - -
+
+### Scope
+
+
+| Feature                                                  | Difficulty | Importance |
+|----------------------------------------------------------|------------|------------|
+| **Navigation:**                                          |            |            |
+| Responsive Design                                       | 1          | 5          |
+| Navigation - all page links                             | 1          | 5          |
+| Navigation - search facility                            | 3          | 4          |
+| **Footer:**                                              |            |            |
+| Footer - company info                                   | 1          | 3          |
+| Footer - social links                                   | 1          | 3          |
+| **Home Page:**                                           |            |            |
+| Home Page - branding & explanatory text                 | 1          | 4          |
+| Home Page - Featured Products                           | 2          | 2          |
+| **Product Management:**                                 |            |            |
+| Products - Product cards with summary info              | 2          | 5          |
+| Products - Product cards with add to bag button         | 2          | 4          |
+| Products - Sorting/searching/filtering                  | 5          | 4          |
+| Products - Detail Page with more info                   | 2          | 5          |
+| Products - Detail Page add to bag & quantity select     | 4          | 5          |
+| Products - CRUD functionality for admins                | 3          | 5          |
+| **Shopping Bag and Checkout:**                          |            |            |
+| Bag - Users can store items in a bag for purchase       | 4          | 5          |
+| Bag - Users can edit product quantity and remove        | 3          | 5          |
+| Checkout - Page with bag summary and delivery info      | 4          | 5          |
+| Checkout - Secure payment system                        | 5          | 5          |
+| Checkout - Page to show order summary on successful checkout | 3        | 3          |
+| **User Accounts:**                                      |            |            |
+| User accounts - all standard login/out/register functionality | 4     | 5          |
+| User accounts - secure & reliable                      | 4          | 5          |
+| Profile - User profile page showing order history      | 3          | 4          |
+| Profile - Page to show historical order information    | 2          | 3          |
+| Profile - Users can save & update their info for future orders | 4     | 4          |
+| **Admin Section:**                                      |            |            |
+| Links in main navigation                               | 2          | 4          |
+| Profile - Filter/view all orders                       | 3          | 4          |
+| Profile - Click to view and edit order status          | 4          | 4          |
+| Admin sections have a different look                   | 3          | 3          |
+
+---
