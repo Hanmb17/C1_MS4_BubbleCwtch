@@ -10,7 +10,7 @@ from .forms import ProductForm
 def all_products(request):
     """ A view to show all products, inclusind sorting and search queries """
 
-    products = Product.objects.all(discontinued=False)
+    products = Product.objects.filter(discontinued=False)
     query = None
     category = None
     sort = None
