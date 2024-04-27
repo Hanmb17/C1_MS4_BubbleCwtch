@@ -108,12 +108,12 @@
             </div>
           </li>
           <li class="list-inline-item">
-            <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-white{% endif %} nav-link heart-background"
+            <a class="{% if grand_total %}text-info fw-bold{% else %}text-white{% endif %} nav-link heart-background"
               href="{% url 'view_bag' %}">
               <div class="heart">
                 <div class="bag-icon"><i class="fas fa-shopping-bag fa-lg text-grey"></i></div>
               </div>
-              <p class="my-1 bag-total text-white {% if grand_total %}weight-bold{% else %}weight-regular{% endif %}">
+              <p class="my-1 bag-total text-white {% if grand_total %}fw-bold{% else %}weight-regular{% endif %}">
                 {% if grand_total %}
                 £{{ grand_total|floatformat:2 }}
                 {% else %}
@@ -191,7 +191,7 @@
     <div class="row justify-content-end">
       <div class="col-md-6">
         <h5>About Us</h5>
-        <p>Add Content</p>
+        <p>Bubble Cwtch for fun bath time products.</p>
       </div>
       <div class="col-md-4 offset-md-2 text-md-end align-self-end">
         <div class="d-inline-block text-start">
