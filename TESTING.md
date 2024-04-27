@@ -137,6 +137,42 @@ Their feedback played a crucial role in refining the project and ensuring its us
 
 - - -
 
+##
+
+| User Story                                                                             | Site Path                                                                                            | Result |
+|----------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------|--------|
+| **As a General User**                                                                  |                                                                                                      |        |
+| Understand the purpose of Bubble Cwtch immediately upon entering the website         | Upon entering the home page, read the branding & explanatory text section                          | Passed |
+| Easily find products with intuitive navigation                                       | Navigate through the site using the navigation menu                                                 | Passed |
+| Bubble Cwtch to be fully responsive for seamless browsing                             | The website is accesable on various devices and screen sizes                                             | Passed |
+| Find Bubble Cwtch on social media for brand insights                                   | Look for social media icons or links in the footer or header                                         | Passed |
+| Effortless navigation back to the main site without relying on browser buttons         | Use the site's navigation menu                                          | Passed |
+| Get feedback when interacting with Bubble Cwtch to confirm the success of my actions   | Toast messages displayed for site interations - add items / removing / sign up                                 | Passed |
+| **As a Shopper**                                                                       |                                                                                                      |        |
+| Browse Bubble Cwtch's products easily, with options to filter and search              | Use the product listing page to filter and search for specific items                                  | Passed |
+| Access more information about each product                                            | Click on a product to view its details                                                              | Passed |
+| Add a product to my bag quickly and with minimum clicks                               | Click the "Add to Bag" button on a product page                                                      | Passed |
+| Shop for multiple items across Bubble Cwtch's product range                           | View all products on products page view                                                              | Passed |
+| Add multiples of a single product to my shopping bag at once                          | Adjust the quantity of the product before adding it to the shopping bag from product details page                              | Passed |
+| Edit my shopping bag contents easily, adding or removing items as needed              | Use the shopping bag page to edit the contents                                                        | Passed |
+| Know the delivery charge for my order before proceeding to Checkout                    | Delivery chareg is displayed when add items to the bag and in the bag page                                            | Passed |
+| Ensure my payment and order are fully secure and trustworthy                          | Use of stripe to handle payments                             | Passed |
+| Have the option to create an account on Bubble Cwtch to save my order history         | Access the sign up page from nav bar and complete the registration process                                | Passed |
+| **As a User with an Account**                                                          |                                                                                                      |        |
+| Ensure my account on Bubble Cwtch is secure and straightforward to set up            | Complete the account setup process with ease and without security concerns                             | Passed |
+| See my order history easily, reviewing past purchases and tracking current orders     | Access the order history section in the user profile settings                                             | Passed |
+| Update and save my personal information within my account settings                    | Edit personal information fields in the user profile settings                                              | Passed |
+| View the status of my order, allowing me to track its progress                        | Check the order status when going into order history                                               | Passed |
+| **As an Admin of the Site**                                                            |                                                                                                      |        |
+| Add and edit products easily                                                           | Access the product management section from product pages or nav link dashboard                                          | Passed |
+| Remove products from sale, managing product availability                               | Utilise the product management buttons on theproduct pages                                           | Passed |
+| Edit featured products                                                                 | Access the featured product management section in the admin dashboard                                  | Passed |
+| View all orders and filter by status                                                   | Navigate to the order management section in the admin dashboard or profile and apply filters as needed                     | Passed |
+| Update the status of a customer's order easily                                         | Access the order details and status update section in the admin dashboard or profile page                             | Passed |
+| Easily navigate to the Django admin                                                    | Access the Django admin panel via the provided link                                                    | Passed |
+| Ensure the admin controls blend with the site design but stand out                     | Review the admin controls' design and appearance for consistency and visibility  - used a pink backgroun for these sections                       | Passed |
+
+
 ## Bugs and Fixes
 
 I encountered an issue with email delivery in our live environment while it worked flawlessly in development raised concerns about system reliability and user experience. Despite attempts to fix it by updating Gmail app passwords and resetting configuration variables in Heroku, the problem persisted, leading me to explore other diagnostic options.
