@@ -152,7 +152,9 @@ Add Diagram
 
 #### Database Schema
 
-Add Diagram
+Below is a visual representation of the database for bubble cwtch made using [DrawSQL](https://drawsql.app/).
+
+![Database Schema](media/readme/testing/database_schema.png)
 
 #### Models
 
