@@ -6,7 +6,7 @@ def index(request):
     """ A view to return the index page """
 
     # Retrieve all products marked as featured
-    featured_products = Product.objects.filter(is_featured=True)
+    featured_products = Product.objects.filter(is_featured=True, discontinued=False)
 
     context = {
         'products': featured_products,
