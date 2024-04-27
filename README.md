@@ -668,6 +668,21 @@ I have found many useful sources in building this project, as this has been my f
 
 - - -
 
+## Credits
+
+### Code
+
+I used [Code Institute](https://codeinstitute.net/)'s [Boutique Ado](https://github.com/Code-Institute-Solutions/boutique_ado_v1/tree/250e2c2b8e43cccb56b4721cd8a8bd4de6686546) project as a base for my project.
+
+For testing I found [The Dumbfounds](https://www.youtube.com/@thedumbfounds767) youtube channel to be a great resource for learning how to.
+
+Below are some projects which I have found useful for more general inspiration and to help me answer the more general questions about how to approach different aspects of the projects, that where shared by our cohoert lead.
+
+[Island Bees](https://github.com/emmahewson/island-bees)
+[ASH Techs](https://github.com/ofemiashiru/CI_MS4_ASHTECHS)
+[Draw with light](https://github.com/mariamar95/ms4?tab=readme-ov-file)
+[Taco y Tequila](https://github.com/GethinDavies1990/CI_MS4_DTR)
+
 ### Content
 
 #### Text
@@ -676,6 +691,15 @@ I have found many useful sources in building this project, as this has been my f
 
 
 #### Images
+
+- [Designer by Microsoft](https://designer.microsoft.com/) Used to generate product images for the website
+This where then edited in afffinity to remove the background - I found this a great tool to ensure I was getting good quailty product images that matched the product visions.
+
+- [Adobe Stock](https://stock.adobe.com/uk/) Used to find the hero image  - which was then edited to have a gradient effect and more bubbles
+
+- [Hero Image](https://stock.adobe.com/uk/484934308) Pink heart made of bubbles and foam. Cosmetics and spa. By Andrii Zastrozhnov
+
+The logo I created myself in affinity designer and photo.
 
 
 - - -
