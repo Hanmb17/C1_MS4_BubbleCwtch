@@ -7,8 +7,6 @@ from .models import Product, Category
 from .forms import ProductForm
 
 
-# Create your views here.
-
 def all_products(request):
     """ A view to show all products, inclusind sorting and search queries """
 
@@ -39,7 +37,6 @@ def all_products(request):
             products = products.filter(category__name=category)
             category = Category.objects.get(name=category)
 
-        
         if 'q' in request.GET:
             query = request.GET['q']
             if not query:
