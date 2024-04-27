@@ -765,8 +765,8 @@ The site has been tested using both automated and manual testing as well as vali
 - [Lucidchart](https://www.lucidchart.com/pages/) To create the flow diagram of the website
 - [DrawSQL](https://drawsql.app/) Used to visually design the database schema
 - [ChatGPT:](https://chat.openai.com/auth/login) Used to generate copy to populate site (not used for any code)
-- [Affinity Photo:]() Used to create 
-- [Affinity Designer:]() Used to create the site logo
+- [Affinity Photo:](https://affinity.serif.com/en-gb/) Used to edit product and hero images
+- [Affinity Designer:](https://affinity.serif.com/en-gb/) Used to create the site logo
 - [Tiny PNG:](https://tinypng.com/) Optimises images for reduced file size
 - [ezGIF:](https://ezgif.com/) Creates GIFs for the README.
 - [Favicon.io:](https://favicon.io/favicon-converter/) Generates and adds the favicon.
@@ -1082,5 +1082,9 @@ The logo I created myself in affinity designer and photo.
 - - -
 
 ### Acknowledgments
+
+I would likt to thank all frineds and family who have suportted me and tested my site.
+
+Amy my cohort lead who kept me going durning the email bug issue. 
 
 
