@@ -101,7 +101,8 @@ I used [W3 HTML Validator](https://validator.w3.org/) using the textarea input b
 
 ### CSS Validation
 
-I used [W3 CSS Validator](https://jigsaw.w3.org/css-validator/validator) to validate the style.css file and received no errors.
+I used [W3 CSS Validator](https://jigsaw.w3.org/css-validator/) to validate the style.css file and received no errors.
+The 21 warnings are for vendor extentions - no change is needed and one for using varibles - which due to their dynamic nature, CSS variables are currently not statically checked.
 
 ### JavaScript Linting
 
@@ -120,3 +121,16 @@ I used the [Wave Web Accessibility Evaluation Tool](https://wave.webaim.org/) to
 ### Performance
 
 I used the Lighthouse feature of Google Dev Tools to assess the scores of the site pages.
+
+- **Mobile Performance**: All pages exhibited suboptimal performance on mobile devices. However, when compared to other MS4 projects and the Boutique Ado, the performance was found to be comparable.
+
+- **Desktop Performance**: Performance on desktop was noticeably better. An immediate improvement area identified is the utilisation of WebP image files instead of PNGs. This optimisation could significantly enhance page load times and overall performance.
+
+
+
+
+
+
+
+
+[Return to README](README.md)
