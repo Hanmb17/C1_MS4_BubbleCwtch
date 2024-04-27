@@ -315,9 +315,42 @@ Add page info here and revert back to user stories
 
 #### Feature Information
 
-Talk about reviews - adding ingredients - recipes for admin and inventory 
-Back to top button
+## Future Features
 
+I hope to evolve and enhance the site for both the user and admin, I have identified several features I would like to add. 
+
+### Contact Page
+
+This would be my first new feature as I planned it in my design. However, due to time spent solving a bug, I did not get time to add this page. A Contact Us page would allow the users to easily contact the bubble cwtch team. 
+
+### User Reviews
+
+I wanted to add a review system to allow users to share their experiences, opinions, and recommendations for products on the site due to time this had to be left out. Adding this will enable users to leave reviews for each product.
+
+### Ingredient Lists
+
+I also want to include detailed ingredient lists for each product. These ingredient lists will offer users valuable information about the contents of each product. It will help users make informed choices based on their individual preferences and dietary requirements.
+
+
+### Inventory Management for Administrators
+
+I want to improve the admin backend with inventory management capabilities. To include a feature such as low-stock alerts. Allowing administrators greater control over product inventory.
+
+
+### Inventory with Recipe Integration
+
+Using the ingredients and inventory features, I would develop them into a recipe management functionality for the admin backend. By associating recipes with products, administrators will be able to get recipes for products that need making when the inventory is low.
+
+### Enhanced User Experience with Back-to-Top Button
+
+I had planned to implement a "Back-to-Top" button. This feature will allow users to quickly return to the top of a page with a single click, making it easier to navigate through long product lists. 
+
+
+
+- - -
+### Testing & Bugs
+
+The site has been tested using both automated and manual testing as well as validation for code, performance & accessibility test results and details of bugs can be found in the [TESTING document](TESTING.md)
 
 - - -
 
