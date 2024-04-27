@@ -19,7 +19,7 @@ The testing document for Bubble Cwtch
     - [Python Linting](#python-linting)
     - [Accessibility Testing](#accessibility)
     - [Performance Testing](#performance)
-- [Feature Testing](#feature-testing)
+- [Manual Testing](#manual-testing)
     - [Responsiveness/Device Testing](#responsiveness--devices)
     - [Browser Compatibility](#browser-compatibility)
     - [Feature Testing Results](#feature-testing-results)
@@ -126,11 +126,26 @@ I used the Lighthouse feature of Google Dev Tools to assess the scores of the si
 
 - **Desktop Performance**: Performance on desktop was noticeably better. An immediate improvement area identified is the utilisation of WebP image files instead of PNGs. This optimisation could significantly enhance page load times and overall performance.
 
+- - -
 
+## Manual Testing
+I performed extensive manual testing for each component as it was integrated. Utilising Google Chrome DevTools, I examined the code directly from the browser while simultaneously observing the rendered site.
 
+Upon achieving full functionality, I actively engaged friends, family, and members of my Code Institute cohort to interact with the site extensively. This approach aimed to identify any user experience gaps or components that deviated from user expectations during real-life usage scenarios. 
 
+Their feedback played a crucial role in refining the project and ensuring its usability and effectiveness.
 
+- - -
 
+## Bugs and Fixes
+
+I encountered an issue with email delivery in our live environment while it worked flawlessly in development raised concerns about system reliability and user experience. Despite attempts to fix it by updating Gmail app passwords and resetting configuration variables in Heroku, the problem persisted, leading me to explore other diagnostic options.
+
+To find the issue, I turned to Mailbox, a test SMTP tool, to replicate email sending in a controlled environment. The tests confirmed that my Django application's email-sending feature was functional, suggesting that the problem stemmed from the live environment's SMTP configuration.
+
+Despite trying various suggestions from Slack, like creating a runtime.txt file, none seemed to resolve the issue. Eventually, I manually set the variables in my code (removed the commit to protect my password, and created a new one) Testing Gmail SMTP functionality showed it was working correctly. However, resetting the variables in Heroku led to another failure.
+
+In the end, I opted to set the variables directly in the terminal, which finally resolved the issue. It appears that while copying and pasting the variables into Heroku's desktop interface, there might have been some unexpected characters causing discrepancies. Setting them via the terminal ensured accuracy and resolved the problem conclusively.
 
 
 [Return to README](README.md)
