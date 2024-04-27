@@ -45,10 +45,10 @@
           {% if product.image %}
           <a class="" href="{{ product.image.url }}" target="_blank">
             <img class="img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}"
-              onerror="this.onerror=null;this.src='{{STATIC_URL}}media/cwtch_in_the_valley.png'">
+              onerror="this.onerror=null;this.src='{{STATIC_URL}}media/no_image.png'">
           </a>
           {% else %}
-          <img class="img-fluid" src="{% static 'media/cwtch_in_the_valley.png' %}" alt="{{ product.name }}">
+          <img class="img-fluid" src="{% static 'media/no_image.png' %}" alt="{{ product.name }}">
           {% endif %}
         </div>
       </div>

@@ -83,7 +83,7 @@ class TestProductsViews(TestCase):
         response = self.client.get(
             reverse('product_detail', args=[self.product_without_image.id]))
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, 'cwtch_in_the_valley.png')
+        self.assertContains(response, 'no_image.png')
 
     def test_product_card_classes(self):
         """

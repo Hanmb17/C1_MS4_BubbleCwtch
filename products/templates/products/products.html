@@ -130,14 +130,14 @@
                 class="card-img-top product-img"
                 src="{{ product.image.url }}"
                 alt="{{ product.name }}"
-                onerror="this.onerror=null;this.src='{{ STATIC_URL }}media/cwtch_in_the_valley.png'">
+                onerror="this.onerror=null;this.src='{{ STATIC_URL }}media/no_image.png'">
             </a>
             {% else %}
             <a
               href="{% url 'product_detail' product.id %}">
               <img
                 class="card-img-top product-img"
-                src="{% static 'media/cwtch_in_the_valley.png' %}"
+                src="{% static 'media/no_image.png' %}"
                 alt="{{ product.name }}">
             </a>
             {% endif %}

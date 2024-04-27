@@ -29,9 +29,9 @@
                         <!-- Product Image -->
                         {% if item.product.image %}
                         <img class="img-fluid" src="{{ item.product.image.url }}" alt="{{ item.product.name }}"
-                            onerror="this.onerror=null;this.src='{{ STATIC_URL }}media/cwtch_in_the_valley.png'">
+                            onerror="this.onerror=null;this.src='{{ STATIC_URL }}media/no_image.png'">
                         {% else %}
-                        <img class="img-fluid" src="{{ MEDIA_URL }}cwtch_in_the_valley.png"
+                        <img class="img-fluid" src="{{ MEDIA_URL }}no_image.png"
                             alt="{{ item.product.name }}">
                         {% endif %}
                     </div>
