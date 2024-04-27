@@ -1,6 +1,6 @@
 # Bubble Cwtch - E-Commerce Site - Using Django
 
-![Mock-up]()
+![Mock-up](media/readme/website_mock_up.png)
 
 #### **By Hannah Bowles**
 [Click here to view the live web application](https://bubble-cwtch-7479c697eb91.herokuapp.com/)

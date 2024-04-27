@@ -1,6 +1,6 @@
 # Bubble Cwtch - E-Commerce Site - Using Django
 
-![Mock-up]()
+![Mock-up](media/readme/website_mock_up.png)
 
 #### **By Hannah Bowles**
 [Click here to view the live web application](https://bubble-cwtch-7479c697eb91.herokuapp.com/)
@@ -20,10 +20,11 @@ Welcome to Bubble Cwtch, an e-commerce platform developed using Django, Python, 
     - [Future Features](#future-features)
 - [Technologies Used](#technologies-used)
     - [Languages](#languages)
-    - [Frontend Frameworks / Libraries](#frontend-frameworks--libraries)
-    - [Backend Modules / Packages & Frameworks](#backend-modules--packages--frameworks)
-    - [Other Tools](#other-tools)
-    - [External Sites / Resources / Software](#external-sites--resources--software)
+    - [Web Development Frameworks](#web-development-frameworks)
+    - [Database and Database Hostings](#database-and-database-hostings)
+    - [Additional Backend Tools](#additional-backend-tools)
+    - [Development, Deployment and testing](#development--deployment-and-testings)
+    - [Creative Resources](#creative-resources)
 - [Testing & Bugs](#testing--bugs)
 - [Deployment](#deployment)
     - [Forking the GitHub Repository](#forking-the-github-repository)
@@ -145,10 +146,57 @@ Using the user stories, I created a list of features I would like to add to the 
 
 ### Structure
 
+Using the above scope I planned the pages and thier content.
+
+#### Home Page
+- Branding & Explanatory Text
+- Featured Products
+- [Wireframe](#)
+
+#### Navigation
+- All Page Links
+- Search Facility
+- [Wireframe](#)
+
+#### Footer
+- Company Info
+- Social Links
+- [Wireframe](#)
+
+#### Product Management
+- Product Cards with Summary Info
+- Product Cards with Add to Bag Button
+- Sorting/Searching/Filtering
+- Detail Page with More Info
+- Detail Page Add to Bag & Quantity Select
+- CRUD Functionality for Admins
+- [Wireframe](#)
+
+#### Shopping Bag & Checkout
+- Page with Bag Summary and Delivery Info
+- Secure Payment System
+- Page to Show Order Summary on Successful Checkout
+- [Wireframe](#)
+
+#### User Accounts
+- All Standard Login/Out/Register Functionality
+- Secure & Reliable User Accounts
+- User Profile Page Showing Order History
+- Page to Show Historical Order Information
+- Users Can Save & Update Their Info for Future Orders
+- [Wireframe](#)
+
+#### Admin Section
+- Links in Main Navigation
+- Filter/View All Orders in Admin Profile
+- Click Through to View and Edit Order Status
+- Admin Sections Have a Different Look
+- [Wireframe](#)
+
+
 - - -
 
 ### Skeleton
-Add Diagram
 
 #### Database Schema
 
@@ -280,14 +328,20 @@ Here's a breakdown of the features on the Bubble Cwtch Site
 #### Meta Tags
 - **Functionality**: All pages have title and description meta tags, enhancing SEO performance.
 - **Value To User**: This ensures easy discovery by online shoppers and provides clarity on the site's purpose and content.
+- **Related User Stories:**
+  - 1.1 I want to understand the purpose of Bubble Cwtch immediately upon entering the website.
 
 #### Layout
 - **Functionality**: Site utilises Bootstrap container to restrict site width for optimal display.
 - **Value To User**: Ensures consistent and visually appealing display across devices, enhancing user experience and eliciting a positive emotional response.
+- **Related User Stories:**
+  - 1.3: I want Bubble Cwtch to be fully responsive for seamless browsing.
 
 #### General Responsiveness
 - **Functionality**: Full responsiveness across all pages, including font size adjustments, padding & margin tweaks, and layout modifications for varying screen sizes.
 - **Value To User**: Ensures seamless navigation and visual appeal on any device, contributing to a positive user experience.
+- **Related User Stories:**
+  - 1.3: I want Bubble Cwtch to be fully responsive for seamless browsing.
 
 #### Favicon
 - **Functionality**: Incorporates a favicon featuring the brand's logo.
@@ -296,21 +350,311 @@ Here's a breakdown of the features on the Bubble Cwtch Site
 #### Nav Bar
 - **Functionality**: Responsive navigation bar with custom layouts and content for different screen sizes.
 - **Value To User**: Facilitates easy navigation regardless of device, offers search functionality and provides feedback on shopping bag contents.
+**Related User Stories:**
+  - 1.2: I want to easily find products with intuitive navigation.
+  - 1.5: I want effortless navigation back to the main site without relying on browser buttons if I encounter a non-existent page.
+  - 2.1: I want to browse Bubble Cwtch's products easily, with options to filter and search for specific items
+  - 4.6: I want to be easily navigate to the Django admin.
 
 #### Delivery Banner
 - **Functionality**: Persistent banner across all pages indicating the free delivery threshold.
 - **Value to User**: Encourages higher spending, informs users about free delivery and boosts sales.
 
+
 #### Buttons and Links
 - **Functionality**: Consistently styled buttons and links with specific colours for different actions.
 - **Value To User**: Provides intuitive UI and reduces mistakes during interactions.
 
+
 #### Messages
 - **Functionality**: Utilises the Django messaging framework and Bootstrap's Toast element for user feedback throughout the site.
 - **Value To User**: Offers reassurance, enhances user experience and promotes a sense of security.
+**Related User Stories:**
+  - 1.6: I want to get feedback when interacting with Bubble Cwtch to confirm the success of my actions.
 
 
-Add page info here and revert back to user stories 
+### Home Page Features
+
+#### Branding & Explanatory Text
+- **Description:** Welcome users to Bubble Cwtch and provide a brief overview of the brand and its offerings.
+- **Wireframe:** [Link to wireframe](#)
+
+#### Featured Products Section
+- **Description:** Showcase selected products that are currently in focus or receiving special attention.
+- **Wireframe:** [Link to wireframe](#)
+- **Related User Stories:**
+  - 2.1: I want to browse Bubble Cwtch's products easily, with options to filter and search for specific items.
+  - 2.3: I want to be able to add a product to my bag quickly and with minimum clicks.
+  - 2.4: I want to be able to shop for multiple items across Bubble Cwtch's product range.
+
+#### Welcome Section
+- **Description:** Provide a warm welcome message to visitors, inviting them to explore Bubble Cwtch further.
+- **Wireframe:** [Link to wireframe](#)
+- **Related User Stories:**
+  - 1.1: I want to understand the purpose of Bubble Cwtch immediately upon entering the website.
+  - 1.2: I want to easily find products with intuitive navigation.
+
+
+### Product Page Features
+
+#### Product Listing
+- **Description:** Display all available products with options for sorting, filtering, and searching.
+- **Wireframe:** [Link to wireframe](#)
+- **Related User Stories:**
+  - 2.1: I want to browse Bubble Cwtch's products easily, with options to filter and search for specific items.
+  - 2.2: I want to access more information about each product.
+  - 2.3: I want to be able to add a product to my bag quickly and with minimum clicks.
+
+#### Sort Dropdown
+- **Description:** Allow users to sort products based on various criteria such as price, rating, and name.
+- **Wireframe:** [Link to wireframe](#)
+- **Related User Stories:**
+  - 2.1: I want to browse Bubble Cwtch's products easily, with options to filter and search for specific items.
+
+#### Product Cards
+- **Description:** Each product displayed as a card containing essential details and an "Add to Bag" button.
+- **Wireframe:** [Link to wireframe](#)
+- **Related User Stories:**
+  - 2.2: I want to access more information about each product.
+  - 2.3: I want to be able to add a product to my bag quickly and with minimum clicks
+
+#### Admin Controls (Superuser Only)
+- **Description:** Superusers have additional options to edit or delete products directly from the product listing.
+- **Wireframe:** [Link to wireframe](#)
+- **Related User Stories:**
+  - 4.1: I want to be able to add and edit products easily.
+  - 4.2: I want to the ability to remove products from sale, managing product availability.
+  - 4.3: I want to be able to edit featured products
+
+#### No Search Results Message
+- **Description:** Inform users when their search query returns no results and provide suggestions to explore other products.
+- **Wireframe:** [Link to wireframe](#)
+- **Related User Stories:**
+  - 1.5: I want effortless navigation back to the main site without relying on browser buttons if I encounter a non-existent page.
+  - 2.1: I want to browse Bubble Cwtch's products easily, with options to filter and search for specific items.
+
+## Product Detail Page Features
+
+#### Product Information
+- **Description:** Display detailed information about the selected product including name, category, price, and description.
+- **Wireframe:** [Link to wireframe](#)
+- **Related User Stories:**
+  - 2.2: I want to access more information about each product.
+
+#### Product Image
+- **Description:** Show an image of the product to give users a visual representation of what they are considering.
+- **Wireframe:** [Link to wireframe](#)
+- **Related User Stories:**
+  - 2.2: I want to access more information about each product.
+
+
+#### Add to Bag Form
+- **Description:** Allow users to select the quantity of the product they wish to purchase and add it to their shopping bag.
+- **Wireframe:** [Link to wireframe](#)
+- **Related User Stories:**
+  - 2.3: I want to be able to add a product to my bag quickly and with minimum clicks.
+
+#### Quantity Input
+- **Description:** Provide a user-friendly interface for adjusting the quantity of the product being added to the bag.
+- **Wireframe:** [Link to wireframe](#)
+- **Related User Stories:**
+  - 2.3: I want to be able to add the desired quantity of a product to my shopping bag.
+  - 2.5: I want to be able to add multiples of a single product to my shopping bag at once.
+
+#### Superuser Controls
+- **Description:** Superusers have additional options to edit or delete the product directly from the product detail page.
+- **Wireframe:** [Link to wireframe](#)
+- **Related User Stories:**
+  - 4.1: I want to be able to add and edit products easily.
+  - 4.2: I want to the ability to remove products from sale, managing product availability.
+  - 4.3: I want to be able to edit featured products.
+
+#### Keep Shopping Button
+- **Description:** Provide a button to allow users to continue browsing other products after adding the current product to their shopping bag.
+- **Wireframe:** [Link to wireframe](#)
+- **Related User Stories:**
+  - 1.5: I want effortless navigation back to the main site without relying on browser buttons if I encounter a non-existent page.
+  - 2.4: I want to be able to shop for multiple items across Bubble Cwtch's product range.
+
+#### No Search Results Message
+- **Description:** Inform users when their search query returns no results and provide suggestions to explore other products.
+- **Wireframe:** [Link to wireframe](#)
+- **Related User Stories:**
+  - 1.5: I want effortless navigation back to the main site without relying on browser buttons if I encounter a non-existent page.
+  - 2.1: I want to browse Bubble Cwtch's products easily, with options to filter and search for specific items.
+
+### Shopping Bag Page Features
+
+#### Shopping Bag Content
+- **Description:** Display all items added to the shopping bag, including product images, names, quantities, and total prices.
+- **Wireframe:** [Link to wireframe](#)
+- **Related User Stories:**
+  - 2.6: I want to be able to edit my shopping bag contents easily, adding or removing items as needed
+
+#### Quantity Adjustment
+- **Description:** Allow users to adjust the quantity of each item in the shopping bag using increment and decrement buttons.
+- **Wireframe:** [Link to wireframe](#)
+- **Related User Stories:**
+  - 2.6: I want to be able to edit my shopping bag contents easily, adding or removing items as needed
+
+#### Summary Section
+- **Description:** Provide a summary of the shopping bag contents, including subtotal, shipping costs (if applicable), and total amount.
+- **Wireframe:** [Link to wireframe](#)
+- **Related User Stories:**
+  - 2.7: I want to know the delivery charge for my order before proceeding to Checkout.
+
+#### Checkout Button
+- **Description:** Offer a prominent button to proceed to the checkout process, allowing users to complete their order.
+- **Wireframe:** [Link to wireframe](#)
+- **Related User Stories:**
+
+#### Keep Shopping Button
+- **Description:** Provide a button to allow users to continue shopping and explore more products without leaving the shopping bag page.
+- **Wireframe:** [Link to wireframe](#)
+- **Related User Stories:**
+
+#### Empty Bag Message
+- **Description:** Display a message indicating that the shopping bag is empty if no items have been added.
+- **Wireframe:** [Link to wireframe](#)
+- **Related User Stories:**
+  - 1.5: I want effortless navigation back to the main site without relying on browser buttons if I encounter a non-existent page
+
+#### Remove Item Button
+- **Description:** Allow users to remove individual items from the shopping bag with a single click.
+- **Wireframe:** [Link to wireframe](#)
+- **Related User Stories:**
+  - 2.6: I want to be able to edit my shopping bag contents easily, adding or removing items as needed.
+
+### Checkout Page Features
+
+#### Order Summary
+- **Description:** Display a summary of the items in the shopping bag, including product names, quantities, and total prices.
+- **Wireframe:** [Link to wireframe](#)
+- **Related User Stories:**
+  - 2.7: I want to know the delivery charge for my order before proceeding to Checkout.
+
+#### Personal Information Form
+- **Description:** Provide fields for users to input their full name and email address.
+- **Wireframe:** [Link to wireframe](#)
+- **Related User Stories:**
+  - 2.9: I want the option to create an account on Bubble Cwtch to save my order history and track order status.
+
+#### Shipping Information Form
+- **Description:** Offer fields for users to enter their phone number, street address, town/city, county, postcode, and country.
+- **Wireframe:** [Link to wireframe](#)
+- **Related User Stories:**
+  - 2.9: I want the option to create an account on Bubble Cwtch to save my order history and track order status.
+
+#### Save Delivery Information Checkbox
+- **Description:** Allow authenticated users to opt-in to save their delivery information for future orders.
+- **Wireframe:** [Link to wireframe](#)
+- **Related User Stories:**
+  - 2.9: I want the option to create an account on Bubble Cwtch to save my order history and track order status.
+  - 3.3: I want the ability to update and save my personal information within my account settings.
+
+#### Payment Details
+- **Description:** Provide a secure form for users to input their payment information, including credit card details.
+- **Wireframe:** [Link to wireframe](#)
+- **Related User Stories:**
+  - 2.8: I want my payment and order to be fully secure and trustworthy.
+
+#### Submit Order Button
+- **Description:** Offer a prominent button for users to finalize their order and proceed with payment.
+- **Wireframe:** [Link to wireframe](#)
+- **Related User Stories:**
+  - 2.8: I want my payment and order to be fully secure and trustworthy.
+
+#### Loading Overlay for Payment Processing
+- **Description:** Display a loading spinner overlay during payment processing to indicate to the user that their request is being processed.
+- **Wireframe:** [Link to wireframe](#)
+- **Related User Stories:**
+  - 2.8: I want my payment and order to be fully secure and trustworthy.
+
+### Checkout Success Page / Order Details PageFeatures
+
+#### Order Information Display
+- **Description:** Display details of the completed order, including order number, order date, and confirmation email.
+- **Wireframe:** [Link to wireframe](#)
+- **Related User Stories:**
+  - 3.2: I want to see my order history easily, reviewing past purchases and tracking current orders.
+
+#### Order Status Update (For Admin)
+- **Description:** Provide a form for administrators to update the order status.
+- **Wireframe:** [Link to wireframe](#)
+- **Related User Stories:**
+  - 4.5: I want to be able to update the status of a customer's order easily.
+
+#### Order Details Display
+- **Description:** Show the items purchased in the order, including product names, quantities, and prices.
+- **Wireframe:** [Link to wireframe](#)
+- **Related User Stories:**
+  - 3.2: I want to see my order history easily, reviewing past purchases and tracking current orders.
+  - 3.4: I want to view the status of my order, allowing me to track its progress.
+
+#### Delivery Information Display
+- **Description:** Show the delivery details, including recipient name, address, phone number, and country.
+- **Wireframe:** [Link to wireframe](#)
+- **Related User Stories:**
+
+#### Billing Information Display
+- **Description:** Show the billing details, including order total, delivery cost, and grand total.
+- **Wireframe:** [Link to wireframe](#)
+- **Related User Stories:**
+  - 2.8: I want my payment and order to be fully secure and trustworthy.
+
+#### Back to Profile or Shop Button
+- **Description:** Offer a button to navigate back to the user profile or the shop, depending on the user's context.
+- **Wireframe:** [Link to wireframe](#)
+- **Related User Stories:**
+  - 4.6: I want to be easily navigate to the Django admin.
+
+### Profile Page Features
+
+#### Profile Header
+- **Description:** Display either "Admin Profile / All Orders" or "My Profile" based on the user's role.
+- **Wireframe:** [Link to wireframe](#)
+- **Related User Stories:**
+  - 3.2: I want to see my order history easily, reviewing past purchases and tracking current orders.
+  - 4.4: I want to be able to view all orders and filter by status.
+
+#### Default Delivery Information Form
+- **Description:** Allow users to update their default delivery information, including street address, city, county, postcode, country, and phone number.
+- **Wireframe:** [Link to wireframe](#)
+- **Related User Stories:**
+  - 3.3: I want the ability to update and save my personal information within my account settings
+
+#### All Orders Display (For Admin)
+- **Description:** Display a list of all orders with filtering options by status for administrators.
+- **Wireframe:** [Link to wireframe](#)
+- **Related User Stories:**
+  - 4.4: I want to be able to view all orders and filter by status.
+
+#### Order History Display (For Users)
+- **Description:** Show a user's order history, including order number, date, items purchased, and total amount.
+- **Wireframe:** [Link to wireframe](#)
+- **Related User Stories:**
+  - 3.2: I want to see my order history easily, reviewing past purchases and tracking current orders
+
+#### Order Details Link
+- **Description:** Provide a link to view detailed information about each order.
+- **Wireframe:** [Link to wireframe](#)
+- **Related User Stories:**
+  - 3.2: I want to see my order history easily, reviewing past purchases and tracking current orders
+
+#### No Orders Message
+- **Description:** Display a message when no orders are found, either due to filtering or if the user hasn't placed any orders yet.
+- **Wireframe:** [Link to wireframe](#)
+- **Related User Stories:**
+  - 3.2: I want to see my order history easily, reviewing past purchases and tracking current orders.
+
+#### Back to Shop Link
+- **Description:** Offer a link to navigate back to the shop if the user hasn't placed any orders yet.
+- **Wireframe:** [Link to wireframe](#)
+- **Related User Stories:**
+  - 1.5: I want effortless navigation back to the main site without relying on browser buttons if I encounter a non-existent page.
+
+
+
 
 
 #### Feature Information
