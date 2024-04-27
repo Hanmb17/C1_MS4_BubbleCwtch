@@ -295,7 +295,31 @@ Add wireframes
 
 #### Colour
 
-Add colour info
+The main colours of the site, serve both aesthetic and functional purposes helping to enhance the overall user experience. Here's a breakdown of how each colour is used:
+
+- **Grey (`#323232`):** This colour is predominantly used as the background for the header and as the main text colour throughout the site, ensuring readability.
+
+- **White (`#fff`):** Is used to add contrast to elements such as certain call-to-action buttons and text on the grey header, improving readability and drawing attention to content.
+
+- **Pink (`#ff69b4`):** Chosen for highlighting certain sections and accents, pink adds a vibrant and playful touch to the design, aligning perfectly with the brand's identity and creating a visually engaging for users.
+
+- **Orange CTA Button:** The orange colour (`#FFB84D`) is especially used for call-to-action buttons throughout the site. It grabs the user's attention and encourages interaction, serving as a visual cue for important actions such as adding items to the cart or proceeding to checkout.
+
+I also wanted to use colour to distinguish between different product categories, making it easier for users to identify products at a glance:
+
+- **Purple (`#bea3fd`):** Represents bath bombs.
+
+- **Blue (`#87ceeb`):** Represents soaps.
+
+- **Green (`#a4d689`):** Represents shower jellies.
+
+Additionally, orange and light pink are used for specific purposes:
+
+- **Orange (Light) (`#FFEBD1`):** This colour is used for certain backgrounds to highlight the contents. To draw attention to important information and add visual interest to the site.
+
+- **Light Pink (`#ffd9ec`):** Mainly used in the admin user section to make these elements stand out against other site elements. It is also sparingly used across the site to provide contrast for users.
+
+
 
 ### Typography
 

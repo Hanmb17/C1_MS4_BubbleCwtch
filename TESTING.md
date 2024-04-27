@@ -22,7 +22,6 @@ The testing document for Bubble Cwtch
 - [Manual Testing](#manual-testing)
     - [Responsiveness/Device Testing](#responsiveness--devices)
     - [Browser Compatibility](#browser-compatibility)
-    - [Feature Testing Results](#feature-testing-results)
 - [User Stories Testing](#user-stories-testing)
 - [Bugs and Fixes](#bugs--fixes)
 
@@ -135,9 +134,17 @@ Upon achieving full functionality, I actively engaged friends, family, and membe
 
 Their feedback played a crucial role in refining the project and ensuring its usability and effectiveness.
 
+### Browser Compatibility
+The website was tested on the following browsers:
+
+- Google Chrome
+- Apple Safari
+- Mozilla Firefox
+- Microsoft Edge
+
 - - -
 
-##
+## User Stories Testing
 
 | User Story                                                                             | Site Path                                                                                            | Result |
 |----------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------|--------|
